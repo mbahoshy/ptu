@@ -14,7 +14,24 @@ pm.Router = Backbone.Router.extend({
     },
 
     home: function (update) {
-    	console.log(update);
+    	console.dir(update);
+    	if (update) {
+    		if (update == 'true') {
+    			console.log('update successful!');
+    		} else {
+    			console.log('update failed, please try again');
+    		}
+    	}
+    	this.clearBody();
+    	$.get('/customer', function (data) {
+    		customerCollection1 = new pm.customerCollection ();
+    		customerCollection1.reset(data);
+    		customerlistview1 = new pm.customerListView ({collection: customerCollection1});
+    		customerlistview1.render();
+    		$('#page').append(customerlistview1.$el);
+    		console.dir(data);
+    	});
+
     },
 
     clearBody: function() {
