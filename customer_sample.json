@@ -1,0 +1,39 @@
+{
+	"objectid":"",
+	"nameFirst":"",
+	"nameLast":"",
+	"address": {
+		"street":"",
+		"city":"",
+		"state":""
+	},
+	"billing": {
+		"street":"",
+		"city":"",
+		"state":""
+	},
+	"equipment":[
+		{
+			"type":"",
+			"systemid":"",
+			"location":"",
+			"make":"",
+			"model":"",
+			"serial":""
+
+		}
+	],
+	"services":[
+		{
+			"systemid":"",
+			"heat-echanger":"",
+			"CO":"",
+			"gas-presssure-high":"",
+			"gas-presssure-low":"",
+			"blower-amps":"",
+			"blower-volts":"",
+			"fan-relay":""
+		}
+	]
+
+}
