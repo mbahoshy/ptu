@@ -1,7 +1,8 @@
 var pm = window.pm = {};
 pm.Router = Backbone.Router.extend({
     routes: {
-        "newcustomer": "createCustomer" //displays chapters
+        "newcustomer": "createCustomer", //create new customer
+        "home/:update": "home" //create new customer
 
     },
 
@@ -10,6 +11,10 @@ pm.Router = Backbone.Router.extend({
         var newcustomerview = new pm.newCustomerView ();
         newcustomerview.render();
         $('#page').append(newcustomerview.$el);
+    },
+
+    home: function (update) {
+    	console.log(update);
     },
 
     clearBody: function() {

@@ -21,6 +21,10 @@ pm.newCustomerView = Backbone.View.extend({
                 zip = $('#zip').val();
 
             $.post('/customer/' + nameFirst + '/' + nameLast + '/' + address + '/' + city + '/' + zip, function (data) {
+                console.dir(data);
+                if (data.success == true) {
+                    pm.router.navigate('#/home/true');
+                }
             });
 
             // $('#new_customer_form').submit();

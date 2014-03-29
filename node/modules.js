@@ -4,9 +4,10 @@ function newCustomer (req, res) {
 		address = req.param("address"),
 		city = req.param("city"),
 		zip = req.param("zip");
-		
+
 	console.log(nameFirst);
-	res.end();
+	res.json({'success':true});
+
 }
 
 
