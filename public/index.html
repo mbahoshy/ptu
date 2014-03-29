@@ -8,9 +8,22 @@
 	<!-- router -->
 	<script src="/js/backbone-router.js"></script>
 
+
+	<!-- models -->
+	<script src="/js/models/customer-model.js"></script>
+
+
+	<!-- collections -->
+	<script src="/js/collections/customer-collection.js"></script>
+
+
 	<!-- views -->
 	<script src="/js/views/new-customer-view.js"></script>
-
+	<script src="/js/views/customer-list-view.js"></script>
+	
+	<script type='text/javascript'>
+		pm.router.navigate('#/home/true');
+	</script>
 </head>
 <body>
 <h1>PM Manager</h1>
@@ -25,8 +38,6 @@
 
 <div id='page'>
 
-	<a href='#/newcustomer'><div id=''>New Customer</div></a>
-	<h2>All Customers</h2>
 </div>
 
 
