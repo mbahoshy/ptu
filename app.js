@@ -13,12 +13,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(passport.session()); //create passport session
 
 
+require('./node/mongoose-config');
 
-var mongoose = require('mongoose');
-
-// require('./config/mongoose');
-
-// require('./models/user');
 
 // require('./config/passport')(passport); // config passport, pass in passport as parameter
 

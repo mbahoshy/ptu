@@ -25,4 +25,4 @@ pm.Router = Backbone.Router.extend({
 pm.router = new pm.Router();
 Backbone.history.start({root: "/"});
 
-alert("router started");
+console.log("backbone router started");

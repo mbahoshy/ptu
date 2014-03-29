@@ -11,7 +11,7 @@ module.exports = function (app) {
 
 	});
 
-	app.post('/customer/:nameFirst/:nameLast/:address/:city/:zip', mod.newCustomer);
+	app.post('/customer/:nameFirst/:nameLast/:email/:address/:city/:zip', mod.newCustomer);
 
 }
 

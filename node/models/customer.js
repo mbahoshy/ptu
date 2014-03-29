@@ -1,4 +1,4 @@
- mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
@@ -12,7 +12,8 @@ var customerSchema = new mongoose.Schema({
 	zip: String
 });
 
-customerSchema.create = function(nameLast, nameFirst, email, address, city, zip) {
+customerSchema.statics.add = function(nameLast, nameFirst, email, address, city, zip) {
+	console.log('fuck');
 	customer.create  ({
 		nameLast: nameLast,
 		nameFirst: nameFirst,
@@ -20,8 +21,12 @@ customerSchema.create = function(nameLast, nameFirst, email, address, city, zip)
 		address: address,
 		city: city,
 		zip: zip,
-	})
+	}, function(err, cust){
+		if(err) throw err;
+		// if (err) return done(err);
+		
+	});
 }
 
-var customer = mongoose.model('customer', customerSchema, 'customer');
+var customer = mongoose.model('customer', customerSchema, 'customers');
 module.exports = customer;
