@@ -1,19 +1,23 @@
+var pm = window.pm = {};
 pm.Router = Backbone.Router.extend({
     routes: {
-        "class/:classid/:chapterindex": "displayChapter", //displays chapters
+        "newcustomer": "createCustomer" //displays chapters
 
     },
 
-
-    intervals: {},
-
-    displayListOfClassrooms: function () {
+    createCustomer: function () {
+        this.clearBody();
+        var newcustomerview = new pm.newCustomerView ();
+        newcustomerview.render();
+        $('#page').append(newcustomerview.$el);
     },
 
     clearBody: function() {
+    	$('#page').html('');
     }
 });
 
 pm.router = new pm.Router();
 Backbone.history.start({root: "/"});
 
+alert("router started");
