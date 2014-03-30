@@ -32,10 +32,9 @@ pm.customerOptions = Backbone.View.extend({
 
 pm.customerEquipmentView = Backbone.View.extend({
 		tagName: 'div',
-        className: 'customer-equipment',
+        className: '',
         title: _.template("<div>Customer Equipment</div>"),
-        template: _.template("<div><p>Type: <%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><p>Install: <%= install %></p></div>"),
-        service: _.template("<div class='create-service'>Create Service</div>"),
+        template: _.template("<div class='customer-equipment'><p>Type: <%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><p>Install: <%= install %></p><div class='create-service'>Create Service</div></div>"),
         events: {
         	'click .create-service': 'createService'
         },
@@ -43,7 +42,6 @@ pm.customerEquipmentView = Backbone.View.extend({
         	console.dir(equipment);
         	this.$el.append(this.title);
         	equipment.forEach(this.renderEquip, this);
-        	this.$el.append(this.service);
         	$('#page').append(this.$el);
         },
         renderEquip: function (model) {

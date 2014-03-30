@@ -30,3 +30,42 @@ h1 {
 #customer-list-table {
 	width:66%;
 }
+
+.equipment-option {
+	width:200px;
+	background-color: #CCCCCC;
+	border-radius: 10px;
+	border:1px solid black;
+	box-shadow: 2px 2px 2px #CCCCCC;
+	margin:25px;
+	padding: 50px 0;
+	float:left;
+	text-align: center;
+}
+
+.customer-equipment {
+	width:200px;
+	background-color: #CCCCCC;
+	border-radius: 10px;
+	border:1px solid black;
+	box-shadow: 2px 2px 2px #CCCCCC;
+	margin:25px;
+	padding: 50px;
+	float:left;
+}
+
+.create-service {
+	background-color: red;
+	color:white;
+	padding:10px 25px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #3C3C3C;
+}
+
+.customer-detail-view {
+	width:100%;
+	float:left;
+	background-color: black;
+	color: white;
+}
