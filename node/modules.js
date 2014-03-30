@@ -36,22 +36,38 @@ function newEquipment (req, res) {
 		make = req.param("make"),
 		model = req.param("model"),
 		serial = req.param("serial"),
-		install = req.param("install");
+		install = req.param("install"),
+		equipmentCounter;
 
+	customer.findById(customerid, function(err, data){
+		equipmentCounter = data.equipmentCounter;
+		console.dir(data.equipmentCounter);
+		updateCustomer();
+	});
 
-	var equipment = {
-		type: type,
-		make: make,
-		model: model,
-		serial: serial,
-		install: install
+	console.log("equipmentCounter");
+	console.log(equipmentCounter);
+	function updateCustomer () {
+		var equipment = {
+			type: type,
+			make: make,
+			model: model,
+			serial: serial,
+			install: install,
+			equipmentid: equipmentCounter
+		}
+
+		equipmentCounter ++;
+		
+		console.log("equipmentCounter");
+		console.log(equipmentCounter);
+		
+		var conditions = { _id: customerid },
+		    options = { multi: false },
+		   	update = { $addToSet: { equipment: equipment }, $set: {equipmentCounter: equipmentCounter}};
+
+		customer.update(conditions, update, options, callback);
 	}
-
-	var conditions = { _id: customerid },
-	    options = { multi: false },
-	   	update = { $addToSet: { equipment: equipment }};
-
-	customer.update(conditions, update, options, callback);
 	
 	function callback (err, numAffected) {
 		if(err) throw err;
