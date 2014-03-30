@@ -56,7 +56,7 @@ pm.enterEquipmentDetails = Backbone.View.extend({
         		customerid = this.customerid;
 
         	$.post('/equipment/' + customerid + '/' + type + '/' + make + '/' + model + '/' + serial + '/' + install, function() {
-
+        		pm.router.navigate('/');
         	});
 
         }
