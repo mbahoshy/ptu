@@ -16,7 +16,8 @@ var customerSchema = new mongoose.Schema({
 		street: String,
 		city: String,
 		zip: String
-	}
+	},
+	equipment: []
 	
 });
 
@@ -29,7 +30,8 @@ customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, 
 			street: street,
 			city: city,
 			zip: zip
-		}
+		},
+		equipment: []
 		
 	}, function(err, cust){
 		if(err) throw err;

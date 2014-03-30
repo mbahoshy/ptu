@@ -14,6 +14,10 @@ module.exports = function (app) {
 	app.post('/customer/:nameFirst/:nameLast/:email/:street/:city/:zip', mod.newCustomer);
 
 	app.get('/customer', mod.returnCustomers);
+	
+	app.get('/customerid/:id', mod.customerId);
+
+	app.post('/equipment/:customerid/:type/:make/:model/:serial/:install', mod.newEquipment);
 
 }
 

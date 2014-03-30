@@ -2,11 +2,13 @@ pm.customerListView = Backbone.View.extend({
         tagName: 'table',
         className: '',
         id:'customer-list-table',
+        template2:_.template("<a href='#/newcustomer'><div id=''>New Customer</div></a><h2>All Customers</h2>"),
         template: _.template("<tr><th>First Name</th><th>Last Name</th><th>Street</th><th>City</th></tr>"),
         events: {
         },
         render : function () {
-                this.$el.html( this.template() );
+                this.$el.append( this.template2() );
+                this.$el.append( this.template() );
                 this.collection.forEach(this.addOne, this);
         },
 
@@ -40,13 +42,4 @@ pm.customerShortView = Backbone.View.extend({
         hoverCustomer: function () {
                 this.$el.toggleClass('customer-hover');
         }
-});
-
-pm.customerDetailView = Backbone.View.extend({
-        tagName: 'div',
-        className: '',
-        template: _.template("<td><%= nameFirst %></td><td><%= nameLast %></td><td><%= address.street %></td><td><%= address.city %></td>"),
-        events: {
-                'click': 'viewCustomer'
-        },
 });
