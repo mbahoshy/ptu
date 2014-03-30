@@ -1,5 +1,9 @@
 <html>
 <head>
+
+	<link rel='stylesheet' href='/css/main.css'	/>
+
+
 	<!-- libs -->
 	<script src="/libs/jquery.js"></script>
 	<script src="/libs/underscore.js"></script>
@@ -20,23 +24,24 @@
 	<!-- views -->
 	<script src="/js/views/new-customer-view.js"></script>
 	<script src="/js/views/customer-list-view.js"></script>
-	
+
 	<script type='text/javascript'>
 		pm.router.navigate('#/home/true');
 	</script>
 </head>
 <body>
-<h1>PM Manager</h1>
 
-<ul>
-	<li>Home</li>
-	<li>Customers</li>
-	<li></li>
-	<li></li>
-	<li></li>
-</ul>
+<div id='header'>
+	<div class='wrapper'>
+		<h1>PM Manager</h1>
+		<ul>
+			<li>Home</li>
+			<a href='#/home/true'><li>Customers</li></a>
+		</ul>
+	</div>
+</div>
 
-<div id='page'>
+<div class='wrapper' id='page'>
 
 </div>
 

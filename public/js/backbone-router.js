@@ -20,7 +20,8 @@ pm.Router = Backbone.Router.extend({
     },
 
     home: function (update) {
-    	console.dir(update);
+    	this.clearBody();
+    	// console.dir(update);
     	if (update) {
     		if (update == 'true') {
     			console.log('update successful!');
@@ -28,7 +29,6 @@ pm.Router = Backbone.Router.extend({
     			console.log('update failed, please try again');
     		}
     	}
-    	this.clearBody();
     	$('#page').append("<a href='#/newcustomer'><div id=''>New Customer</div></a><h2>All Customers</h2>")
     	$.get('/customer', function (data) {
     		customerCollection1 = new pm.customerCollection ();

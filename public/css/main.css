@@ -1,0 +1,32 @@
+body {
+	margin:0;
+	padding:0;
+	font-size: 17px;
+}
+
+#header {
+	width: 100%;
+	background-color: blue;
+}
+
+.wrapper {
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	text-align: center;
+	color:white;
+	padding:15px 0;
+	margin: 0;
+}
+
+.customer-hover {
+	background-color: red;
+	color:white;
+}
+
+#customer-list-table {
+	width:66%;
+}

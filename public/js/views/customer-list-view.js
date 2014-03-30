@@ -1,10 +1,12 @@
 pm.customerListView = Backbone.View.extend({
         tagName: 'table',
         className: '',
-        template: _.template(""),
+        id:'customer-list-table',
+        template: _.template("<tr><th>First Name</th><th>Last Name</th><th>Street</th><th>City</th></tr>"),
         events: {
         },
         render : function () {
+                this.$el.html( this.template() );
                 this.collection.forEach(this.addOne, this);
         },
 
@@ -22,7 +24,9 @@ pm.customerShortView = Backbone.View.extend({
         className: '',
         template: _.template("<td><%= nameFirst %></td><td><%= nameLast %></td><td><%= address.street %></td><td><%= address.city %></td>"),
         events: {
-                'click': 'viewCustomer'
+                'click': 'viewCustomer',
+                'mouseenter': 'hoverCustomer',
+                'mouseleave': 'hoverCustomer'
         },
         render : function () {
                 this.$el.html( this.template(this.model.toJSON()) );
@@ -32,5 +36,17 @@ pm.customerShortView = Backbone.View.extend({
         viewCustomer: function () {
                 console.log(this.customerId);
                 pm.router.navigate('#/customer/' + this.customerId);
+        },
+        hoverCustomer: function () {
+                this.$el.toggleClass('customer-hover');
         }
+});
+
+pm.customerDetailView = Backbone.View.extend({
+        tagName: 'div',
+        className: '',
+        template: _.template("<td><%= nameFirst %></td><td><%= nameLast %></td><td><%= address.street %></td><td><%= address.city %></td>"),
+        events: {
+                'click': 'viewCustomer'
+        },
 });
