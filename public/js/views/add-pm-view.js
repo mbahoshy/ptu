@@ -11,5 +11,13 @@ pm.newPMView = Backbone.View.extend({
     	console.dir(equipment);
 		this.$el.append(this[equipment.type](equipment));
 		$('#page').append(this.$el);
+    },
+    events: {
+    	'click #submit_pm': 'submitPM'
+    },
+    submitPM: function (e) {
+    	e.preventDefault();
+    	var x = $('#pmform').serializeObject();
+    	console.dir(x);
     }
 });

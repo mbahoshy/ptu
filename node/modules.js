@@ -75,6 +75,11 @@ function newEquipment (req, res) {
 	}
 }
 
+function addpm (req, res) {
+	
+}
+
+exports.addpm = addpm;
 exports.newCustomer = newCustomer;
 exports.customerId = customerId;
 exports.returnCustomers = returnCustomers;

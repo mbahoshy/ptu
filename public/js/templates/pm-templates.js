@@ -1,5 +1,5 @@
 pm.templates.gasPM = "\
-	<form>\
+	<form id='pmform'>\
 	<div>Make: <input type='text' name='make' value='<%= make %>'></div>\
 	<div>Model: <input type='text' name='model' value='<%= model %>'></div>\
 	<div>Serial: <input type='text' name='serial' value='<%= serial %>'></div>\
@@ -18,7 +18,7 @@ pm.templates.gasPM = "\
 		<p>High: <input type='text' name='highgas' value=''></p>\
 		<p>Low: <input type='text' name='lowgas' value=''></p>\
 	</div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
 
@@ -40,7 +40,7 @@ pm.templates.electricPM = "\
 		<p>#3: <input type='text' name='sh3' value=''></p>\
 		<p>#4: <input type='text' name='sh4' value=''></p>\
 	</div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
 
@@ -66,7 +66,7 @@ pm.templates.acPM = "\
 	</div>\
 	<div>Condensor Temp Rise: <input type='text' name='contd'></div>\
 	<div>Indoor delta T: <input type='text' name='deltat'></div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
 
@@ -92,7 +92,7 @@ pm.templates.heatpumpPM = "\
 	</div>\
 	<div>Condensor Temp Drop: <input type='text' name='contd'></div>\
 	<div>Indoor delta T: <input type='text' name='deltat'></div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
 
@@ -107,7 +107,7 @@ pm.templates.airhandlerPM = "\
 		<p>Rated: <input type='text' name='caprated1'></p>\
 		<p>Actual: <input type='text' name='capact1'></p>\
 	</div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
 
@@ -123,6 +123,6 @@ pm.templates.splitPM = "\
 		<p>#3: <input type='text' name='sh3' value=''></p>\
 		<p>#4: <input type='text' name='sh4' value=''></p>\
 	</div>\
-	<input type='submit' value='Submit'>\
+	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
