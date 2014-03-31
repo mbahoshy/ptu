@@ -47,14 +47,15 @@ pm.Router = Backbone.Router.extend({
 
     addPM: function (customerid, equipmentid) {
     	this.clearBody();
-
+    	var intEquipmentId = parseInt(equipmentid);
     	console.dir(pm.templategasPM);
 
     	var equipment;
 
     	$.get('/customerid/' + customerid, function (data) {
     		console.dir(data.equipment);
-    		equipment = _.findWhere(data.equipment, {equipmentid: equipmentid});
+    		console.dir(equipmentid);
+    		equipment = _.findWhere(data.equipment, {equipmentid: intEquipmentId});
     		console.dir(equipment);
     		var pmview1 = new pm.newPMView (equipment);
     	});
