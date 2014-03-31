@@ -1,10 +1,13 @@
 var pm = window.pm = {};
+pm.templates = {};
+
 pm.Router = Backbone.Router.extend({
     routes: {
         "newcustomer": "createCustomer", //create new customer
         "home/:update": "home", //create new customer
-        "customer/:id": "displayCustomer", //create new customer
-        "equipment/:id": "addEquipment" //create new customer
+        "customer/:customerid": "displayCustomer", //create new customer
+        "addequipment/:customerid": "addEquipment", //add equipment to exsiting customer
+        "addpm/:customerid/:equipmentid": "addPM" //add service to existing equipment
 
     },
 
@@ -16,19 +19,18 @@ pm.Router = Backbone.Router.extend({
     },
 
 
-    displayCustomer: function (id) {
+    displayCustomer: function (customerid) {
     	this.clearBody();
-    	console.log(id);
-    	$.get('/customerid/' + id, function (data) {
-    		customerdetailview1 = new pm.customerDetailView ();
-    		customerdetailview1.render(data);
-    		$('#page').append(customerdetailview1.$el);
+    	console.log(customerid);
+    	$.get('/customerid/' + customerid, function (data) {
 
-    		customeroptionview1 = new pm.customerOptions ();
+    		var customerdetailview1 = new pm.customerDetailView (data);
+    		
+    		var customeroptionview1 = new pm.customerOptions ();
     		customeroptionview1.render(data._id);
 			$('#page').append(customeroptionview1.$el);
 
-			customerequipmentview = new pm.customerEquipmentView (data.equipment); 		
+			var customerequipmentview = new pm.customerEquipmentView (data.equipment, data._id); 		
     		console.dir(data);
     	});
 
@@ -41,6 +43,21 @@ pm.Router = Backbone.Router.extend({
     	addequipmentview1 = new pm.addEquipmentView ();
     	addequipmentview1.render(customerid);
     	$('#page').append(addequipmentview1.$el);
+    },
+
+    addPM: function (customerid, equipmentid) {
+    	this.clearBody();
+
+    	console.dir(pm.templategasPM);
+
+    	var equipment;
+
+    	$.get('/customerid/' + customerid, function (data) {
+    		console.dir(data.equipment);
+    		equipment = _.findWhere(data.equipment, {equipmentid: equipmentid});
+    		console.dir(equipment);
+    		var pmview1 = new pm.newPMView (equipment);
+    	});
     },
 
     home: function (update) {

@@ -2,13 +2,11 @@ pm.customerDetailView = Backbone.View.extend({
         tagName: 'div',
         className: 'customer-detail-view',
         template: _.template("<div>Name: <%= nameLast %>, <%= nameFirst %></div><div>Address: <%= address.street %>, <%= address.city %></div>"),
-        render : function (model) {
-                this.$el.html( this.template(model));
-                return this;
-        },
-        events: {
+        initialize: function (model) {
+			this.$el.html( this.template(model));
+    		$('#page').append(this.$el);
                 
-        },
+        }
 });
 
 pm.customerOptions = Backbone.View.extend({
@@ -26,7 +24,7 @@ pm.customerOptions = Backbone.View.extend({
         addEquip: function () {
         	console.log("add equipment");
         	// console.log(this.customerid);
-        	pm.router.navigate('#/equipment/' + this.customerid);
+        	pm.router.navigate('#/addequipment/' + this.customerid);
         }
 });
 
@@ -34,12 +32,12 @@ pm.customerEquipmentView = Backbone.View.extend({
 		tagName: 'div',
         className: '',
         title: _.template("<div>Customer Equipment</div>"),
-        template: _.template("<div class='customer-equipment'><p>Type: <%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><p>Install: <%= install %></p><div class='create-service'>Create Service</div></div>"),
+        template: _.template("<div class='customer-equipment'><p>Type: <%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><p>Install: <%= install %></p><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
         events: {
-        	'click .create-service': 'createService'
+        	'click .create-pm': 'createPM'
         },
-        initialize: function (equipment) {
-        	console.dir(equipment);
+        initialize: function (equipment, customerid) {
+        	this.customerid = customerid;
         	this.$el.append(this.title);
         	equipment.forEach(this.renderEquip, this);
         	$('#page').append(this.$el);
@@ -47,7 +45,9 @@ pm.customerEquipmentView = Backbone.View.extend({
         renderEquip: function (model) {
         	this.$el.append(this.template(model));
         },
-        createService: function () {
-        	console.dir();
+        createPM: function (e) {
+        	// e.target.id = equipmentid
+        	pm.router.navigate('#/addpm/' + this.customerid + '/' + e.target.id);
+        	console.dir("create service clicked");
         }
 });
