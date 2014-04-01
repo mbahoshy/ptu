@@ -100,8 +100,27 @@ function addpm (req, res) {
 }
 
 
+function customersearch (req, res){
+	console.dir(req.body);
+
+	// var action = {};
+	// action[searchoptions] = searchterms;
+
+	// console.dir(action);
+
+	// console.dir(searchoptions);
+	// console.dir(searchterms);
+
+	customer.find(req.body, function (err, documents) {
+		console.dir(documents);
+		res.json(documents);
+	});
+}
+
+
 exports.addpm = addpm;
 exports.newCustomer = newCustomer;
 exports.customerId = customerId;
 exports.returnCustomers = returnCustomers;
 exports.newEquipment = newEquipment;
+exports.customersearch = customersearch;

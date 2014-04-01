@@ -4,13 +4,12 @@ pm.templates = {};
 pm.Router = Backbone.Router.extend({
     routes: {
         "newcustomer": "createCustomer", //create new customer
-        "home/:update": "home", //create new customer
+        "home": "home", //create new customer
         "customer/:customerid": "displayCustomer", //create new customer
         "addequipment/:customerid": "addEquipment", //add equipment to exsiting customer
         "addpm/:customerid/:equipmentid": "addPM" //add service to existing equipment
 
     },
-
     createCustomer: function () {
         this.clearBody();
         var newcustomerview = new pm.newCustomerView ();        
@@ -57,17 +56,10 @@ pm.Router = Backbone.Router.extend({
     	});
     },
 
-    home: function (update) {
+    home: function () {
     	this.clearBody();
 
-    	if (update) {
-    		if (update == 'true') {
-    			console.log('update successful!');
-    		} else {
-    			console.log('update failed, please try again');
-    		}
-    	}
-
+    	var customersearch = new pm.customerSearchBox ();
     	var homeoptions = new pm.homeOptions ();
 
     	$.get('/customer', function (data) {
@@ -88,5 +80,9 @@ pm.Router = Backbone.Router.extend({
 
 pm.router = new pm.Router();
 Backbone.history.start({root: "/"});
+
+$(document).ready(function() {
+	pm.router.navigate('#/home');
+});
 
 console.log("backbone router started");

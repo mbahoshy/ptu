@@ -12,7 +12,7 @@ pm.customerDetailView = Backbone.View.extend({
 pm.customerOptions = Backbone.View.extend({
         tagName: 'div',
         className: 'customer-options',
-        template: _.template("<div id='add_equip'>Add Equipment</div><div id='create_pm'>Create Maintenance</div>"),
+        template: _.template("<div class='button' id='add_equip'>Add Equipment</div>"),
         render : function (id) {
                 this.$el.html( this.template());
                 this.customerid = id;
@@ -31,8 +31,8 @@ pm.customerOptions = Backbone.View.extend({
 pm.customerEquipmentView = Backbone.View.extend({
 		tagName: 'div',
         className: '',
-        title: _.template("<div>Customer Equipment</div>"),
-        template: _.template("<div class='customer-equipment'><p>Type: <%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><p>Install: <%= install %></p><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
+        title: _.template("<div>Current Equipment</div>"),
+        template: _.template("<div class='customer-equipment'><%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
         events: {
         	'click .create-pm': 'createPM'
         },

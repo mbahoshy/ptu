@@ -24,7 +24,7 @@ pm.newCustomerView = Backbone.View.extend({
             $.post('/customer/' + nameFirst + '/' + nameLast + '/' + email + '/' + street + '/' + city + '/' + zip, function (data) {
                 console.dir(data);
                 if (data.success == true) {
-                    pm.router.navigate('#/home/true');
+                    pm.router.navigate('#/home');
                 }
             });
 

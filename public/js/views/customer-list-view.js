@@ -2,12 +2,15 @@ pm.customerListView = Backbone.View.extend({
         tagName: 'table',
         className: '',
         id:'customer_list_table',
-        template2:_.template("<h2>All Customers</h2>"),
         template: _.template("<tr><th>Last Name</th><th>First Name</th><th>Street</th><th>City</th></tr>"),
         events: {
         },
+        initialize: function (){
+            var that = this;
+            this.collection.bind("reset", this.render);
+        },
         render : function () {
-                this.$el.append( this.template2() );
+                console.dir(this);
                 this.$el.append( this.template() );
                 this.collection.forEach(this.addOne, this);
         },
@@ -17,6 +20,35 @@ pm.customerListView = Backbone.View.extend({
                 var customerview1 = new pm.customerShortView({model: model});
                 this.$el.append(customerview1.render().el);
         },
+});
+
+pm.customerSearchBox = Backbone.View.extend({
+        tagName: 'div',
+        className: 'customer-search-box',
+        template2:_.template("<form method='post' id='searchForm' action='/customersearch'>Search: <input type='text' value='enter search terms' id='searchterms'><select id='searchoptions'><option value='nameLast'>Last Name</option><option value='nameFirst'>First Name</option><option value='city'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
+        events: {
+            'click #customer_search': 'customerSearch'
+        },
+        initialize: function () {
+            this.$el.append( this.template2() );
+            $('#page').append(this.$el);        
+        },
+        customerSearch: function (e) {
+            e.preventDefault();
+
+            var searchoptions = $('#searchoptions').val();
+            var searchterms = $('#searchterms').val();
+
+            var y = {};
+            y[searchoptions] = searchterms;
+            console.dir(y);
+            
+            $.post('/customersearch', y, function(data) {
+                console.dir(data)
+                customerCollection1.reset(data);
+
+            });
+        }
 });
 
 pm.customerShortView = Backbone.View.extend({
@@ -46,7 +78,7 @@ pm.customerShortView = Backbone.View.extend({
 pm.homeOptions = Backbone.View.extend ({
         tagName: 'div',
         className: 'home-options',
-        template2:_.template("<a href='#/newcustomer'><div id='new_customer'>New Customer</div></a>"),
+        template2:_.template("<a href='#/newcustomer'><div class='button' id='new_customer'>New Customer</div></a>"),
         initialize: function () {
             this.$el.append( this.template2() );
             $('#page').append(this.$el);
