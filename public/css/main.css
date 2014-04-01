@@ -23,12 +23,30 @@ h1 {
 }
 
 .customer-hover {
-	background-color: red;
-	color:white;
+	background-color: red !important;
+	color:white !important;
 }
 
-#customer-list-table {
+.home-options {
+	float:right;
+	width:33%;
+}
+
+#customer_list_table {
 	width:66%;
+	float:left;
+}
+
+#customer_list_table tr {
+	height:40px;
+}
+
+#customer_list_table tr:nth-child(even) {
+	background-color: yellow;
+}
+
+#new_customer {
+	
 }
 
 .equipment-option {

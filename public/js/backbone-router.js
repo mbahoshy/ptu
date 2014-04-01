@@ -13,9 +13,7 @@ pm.Router = Backbone.Router.extend({
 
     createCustomer: function () {
         this.clearBody();
-        var newcustomerview = new pm.newCustomerView ();
-        newcustomerview.render();
-        $('#page').append(newcustomerview.$el);
+        var newcustomerview = new pm.newCustomerView ();        
     },
 
 
@@ -47,23 +45,21 @@ pm.Router = Backbone.Router.extend({
 
     addPM: function (customerid, equipmentid) {
     	this.clearBody();
-    	var intEquipmentId = parseInt(equipmentid);
-    	console.dir(pm.templategasPM);
 
-    	var equipment;
+    	var equipment,
+			intEquipmentId = parseInt(equipmentid);
 
     	$.get('/customerid/' + customerid, function (data) {
-    		console.dir(data.equipment);
-    		console.dir(equipmentid);
+
     		equipment = _.findWhere(data.equipment, {equipmentid: intEquipmentId});
-    		console.dir(equipment);
     		var pmview1 = new pm.newPMView (equipment, customerid);
+
     	});
     },
 
     home: function (update) {
     	this.clearBody();
-    	// console.dir(update);
+
     	if (update) {
     		if (update == 'true') {
     			console.log('update successful!');
@@ -71,7 +67,9 @@ pm.Router = Backbone.Router.extend({
     			console.log('update failed, please try again');
     		}
     	}
-    	// $('#page').append("")
+
+    	var homeoptions = new pm.homeOptions ();
+
     	$.get('/customer', function (data) {
     		customerCollection1 = new pm.customerCollection ();
     		customerCollection1.reset(data);

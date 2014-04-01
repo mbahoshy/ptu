@@ -1,9 +1,9 @@
 pm.customerListView = Backbone.View.extend({
         tagName: 'table',
         className: '',
-        id:'customer-list-table',
-        template2:_.template("<a href='#/newcustomer'><div id=''>New Customer</div></a><h2>All Customers</h2>"),
-        template: _.template("<tr><th>First Name</th><th>Last Name</th><th>Street</th><th>City</th></tr>"),
+        id:'customer_list_table',
+        template2:_.template("<h2>All Customers</h2>"),
+        template: _.template("<tr><th>Last Name</th><th>First Name</th><th>Street</th><th>City</th></tr>"),
         events: {
         },
         render : function () {
@@ -14,9 +14,7 @@ pm.customerListView = Backbone.View.extend({
 
         addOne: function (model) {
 
-                var customerview1 = new pm.customerShortView({
-                    model: model
-                });
+                var customerview1 = new pm.customerShortView({model: model});
                 this.$el.append(customerview1.render().el);
         },
 });
@@ -42,4 +40,16 @@ pm.customerShortView = Backbone.View.extend({
         hoverCustomer: function () {
                 this.$el.toggleClass('customer-hover');
         }
+});
+
+
+pm.homeOptions = Backbone.View.extend ({
+        tagName: 'div',
+        className: 'home-options',
+        template2:_.template("<a href='#/newcustomer'><div id='new_customer'>New Customer</div></a>"),
+        initialize: function () {
+            this.$el.append( this.template2() );
+            $('#page').append(this.$el);
+        }
+
 });

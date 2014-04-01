@@ -68,7 +68,7 @@ function newEquipment (req, res) {
 
 		customer.update(conditions, update, options, callback);
 	}
-	
+
 	function callback (err, numAffected) {
 		if(err) throw err;
 		res.end();
@@ -79,7 +79,12 @@ function newEquipment (req, res) {
 function addpm (req, res) {
 	console.dir(req.body);
 	var customerid = req.body.customerid,
-		ticket = req.body.ticket;
+		ticket = req.body.ticket,
+		t = new Date();
+
+	ticket.date = t;
+
+	console.dir(ticket);
 
 	var conditions = { _id: customerid },
 	    options = { multi: false },
