@@ -7,9 +7,10 @@ pm.customerListView = Backbone.View.extend({
         },
         initialize: function (){
             var that = this;
-            this.collection.bind("reset", this.render);
+            this.collection.bind("reset", this.render, this);
         },
         render : function () {
+                this.$el.html('');
                 console.dir(this);
                 this.$el.append( this.template() );
                 this.collection.forEach(this.addOne, this);
@@ -54,7 +55,7 @@ pm.customerSearchBox = Backbone.View.extend({
 pm.customerShortView = Backbone.View.extend({
         tagName: 'tr',
         className: '',
-        template: _.template("<td><%= nameFirst %></td><td><%= nameLast %></td><td><%= address.street %></td><td><%= address.city %></td>"),
+        template: _.template("<td><%= nameLast %></td><td><%= nameFirst %></td><td><%= address.street %></td><td><%= address.city %></td>"),
         events: {
                 'click': 'viewCustomer',
                 'mouseenter': 'hoverCustomer',
