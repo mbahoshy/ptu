@@ -28,9 +28,11 @@ pm.customerSearchBox = Backbone.View.extend({
         className: 'customer-search-box',
         template2:_.template("<form method='post' id='searchForm' action='/customersearch'>Search: <input type='text' value='enter search terms' id='searchterms'><select id='searchoptions'><option value='nameLast'>Last Name</option><option value='nameFirst'>First Name</option><option value='city'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
         events: {
-            'click #customer_search': 'customerSearch'
+            'click #customer_search': 'customerSearch',
+            'keypress #searchterms': 'keypressTimeout'
         },
         initialize: function () {
+            this.stopTyping;
             this.$el.append( this.template2() );
             $('#page').append(this.$el);        
         },
@@ -49,6 +51,13 @@ pm.customerSearchBox = Backbone.View.extend({
                 customerCollection1.reset(data);
 
             });
+        },
+        keypressTimeout: function () {
+              if (this.stoppedTyping) clearTimeout(this.stoppedTyping);
+              // set a new timer to execute 3 seconds from last keypress
+              this.stoppedTyping = setTimeout(function(){
+                    $('#customer_search').trigger('click');
+              }, 100); 
         }
 });
 
