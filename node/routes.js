@@ -19,6 +19,6 @@ module.exports = function (app) {
 
 	app.post('/equipment/:customerid/:type/:make/:model/:serial/:install', mod.newEquipment);
 
-	app.post('/addpm', mod.addPm);
+	app.post('/addpm', mod.addpm);
 }
 

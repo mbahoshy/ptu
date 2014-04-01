@@ -72,12 +72,28 @@ function newEquipment (req, res) {
 	function callback (err, numAffected) {
 		if(err) throw err;
 		res.end();
-	}
+	}	
+
 }
 
 function addpm (req, res) {
-	
+	console.dir(req.body);
+	var customerid = req.body.customerid,
+		ticket = req.body.ticket;
+
+	var conditions = { _id: customerid },
+	    options = { multi: false },
+	   	update = { $push: { pm: ticket }};
+
+	customer.update(conditions, update, options, callback);
+
+	function callback (err, numAffected) {
+		if(err) throw err;
+		res.end();
+	}
+
 }
+
 
 exports.addpm = addpm;
 exports.newCustomer = newCustomer;

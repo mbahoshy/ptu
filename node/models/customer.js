@@ -18,7 +18,8 @@ var customerSchema = new mongoose.Schema({
 		zip: String
 	},
 	equipmentCounter: Number,
-	equipment: []
+	equipment: [],
+	pm: []
 	
 });
 
@@ -33,7 +34,8 @@ customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, 
 			zip: zip
 		},
 		equipmentCounter: 0,
-		equipment: []
+		equipment: [],
+		pm: []
 		
 	}, function(err, cust){
 		if(err) throw err;

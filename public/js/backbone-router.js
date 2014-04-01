@@ -57,7 +57,7 @@ pm.Router = Backbone.Router.extend({
     		console.dir(equipmentid);
     		equipment = _.findWhere(data.equipment, {equipmentid: intEquipmentId});
     		console.dir(equipment);
-    		var pmview1 = new pm.newPMView (equipment);
+    		var pmview1 = new pm.newPMView (equipment, customerid);
     	});
     },
 

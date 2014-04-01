@@ -7,8 +7,10 @@ pm.newPMView = Backbone.View.extend({
     heatpump: _.template(pm.templates.heatpumpPM),
     airhandler: _.template(pm.templates.airhandlerPM),
     split: _.template(pm.templates.splitPM),
-    initialize: function (equipment) {
+    initialize: function (equipment, customerid) {
     	console.dir(equipment);
+    	this.equipmentid = equipment.equipmentid;
+    	this.customerid = customerid;
 		this.$el.append(this[equipment.type](equipment));
 		$('#page').append(this.$el);
     },
@@ -17,7 +19,15 @@ pm.newPMView = Backbone.View.extend({
     },
     submitPM: function (e) {
     	e.preventDefault();
-    	var x = $('#pmform').serializeObject();
-    	console.dir(x);
+    	var w = {};
+
+    	w.customerid = this.customerid;
+    	w.ticket = $('#pmform').serializeObject();
+    	w.ticket.equipmentid = this.equipmentid;
+    	
+    	console.dir(w);
+    	$.post('/addpm', w, function() {
+
+    	});
     }
 });

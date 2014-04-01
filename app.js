@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(passport.initialize()); //initialize passport
 // app.use(passport.session()); //create passport session
 
+app.configure(function(){
+  app.use(express.bodyParser());
+});
 
 require('./node/mongoose-config');
 
