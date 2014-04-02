@@ -24,7 +24,7 @@ var customerSchema = new mongoose.Schema({
 	
 });
 
-customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, zip) {
+customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, zip, res) {
 	customer.create  ({
 		nameLast: nameLast,
 		nameFirst: nameFirst,
@@ -41,6 +41,8 @@ customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, 
 		
 	}, function(err, cust){
 		if(err) throw err;
+		res.json({'success':true});
+
 		// if (err) return done(err);
 		
 	});

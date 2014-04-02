@@ -8,10 +8,10 @@ function newCustomer (req, res) {
 		city = req.param("city"),
 		zip = req.param("zip");
 
-	customer.add(nameLast, nameFirst, email, street, city, zip);
+	customer.add(nameLast, nameFirst, email, street, city, zip, res);
 
 	console.log(nameFirst);
-	res.json({'success':true});
+	// res.json({'success':true});
 
 }
 
