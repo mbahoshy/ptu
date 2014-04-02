@@ -7,6 +7,11 @@ var customerSchema = new mongoose.Schema({
 	nameLast:   String,
 	nameFirst:  String,
 	email: String,
+	search: {
+		nameFirstSearch: String,
+		nameLastSearch: String,
+		citySearch: String,
+	},
 	address: {
 		street: String,
 		city: String,
@@ -29,6 +34,11 @@ customerSchema.statics.add = function(nameLast, nameFirst, email, street, city, 
 		nameLast: nameLast,
 		nameFirst: nameFirst,
 		email: email,
+		search: {
+			nameFirstSearch: nameFirst.toUpperCase(),
+			nameLastSearch: nameLast.toUpperCase(),
+			citySearch: city.toUpperCase(),
+		},
 		address: {
 			street: street,
 			city: city,

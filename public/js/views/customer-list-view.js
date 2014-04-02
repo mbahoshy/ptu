@@ -26,7 +26,7 @@ pm.customerListView = Backbone.View.extend({
 pm.customerSearchBox = Backbone.View.extend({
         tagName: 'div',
         className: 'customer-search-box',
-        template2:_.template("<form method='post' id='searchForm' action='/customersearch'><input type='text' value='enter search terms' id='searchterms'><select id='searchoptions'><option value='nameLast'>Last Name</option><option value='nameFirst'>First Name</option><option value='city'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
+        template2:_.template("<form method='post' id='searchForm' action='/customersearch'><input type='text' placeholder='enter search terms' id='searchterms'><select id='searchoptions'><option value='search.nameLastSearch'>Last Name</option><option value='search.nameFirstSearch'>First Name</option><option value='search.citySearch'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
         events: {
             'click #customer_search': 'customerSearch',
             'keyup #searchterms': 'keypressTimeout'
@@ -40,7 +40,7 @@ pm.customerSearchBox = Backbone.View.extend({
             e.preventDefault();
 
             var searchoptions = $('#searchoptions').val();
-            var searchterms = $('#searchterms').val();
+            var searchterms = $('#searchterms').val().toUpperCase();
 
             if (searchterms == '') {
                 $.get('/customer', function(data) {

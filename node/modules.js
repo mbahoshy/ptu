@@ -7,6 +7,7 @@ function newCustomer (req, res) {
 		street = req.param("street"),
 		city = req.param("city"),
 		zip = req.param("zip");
+		
 
 	customer.add(nameLast, nameFirst, email, street, city, zip, res);
 

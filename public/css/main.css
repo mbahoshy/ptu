@@ -71,7 +71,7 @@ h1 {
 
 .customer-equipment p {
 	margin:0;
-	padding:15px;
+	padding:5px;
 }
 
 .customer-options {
@@ -112,6 +112,24 @@ h1 {
 	background-color: red !important;
 	color:white !important;
 }
+
+.create-pm {
+	background-color: red;
+	color:white;
+	padding:10px 25px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #3C3C3C;
+}
+
+.equipment-history {
+	background-color: grey;
+	padding:10px 25px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #3C3C3C;
+}
+
 
 /* home page styling */
 
@@ -172,11 +190,3 @@ h1 {
 	color:white;
 }
 
-.create-pm {
-	background-color: red;
-	color:white;
-	padding:10px 25px;
-	text-align: center;
-	border-radius: 5px;
-	box-shadow: 2px 2px 2px #3C3C3C;
-}
