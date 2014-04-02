@@ -23,9 +23,9 @@ pm.Router = Backbone.Router.extend({
 
     		var customerdetailview1 = new pm.customerDetailView (data);
     		
-    		var customeroptionview1 = new pm.customerOptions ();
-    		customeroptionview1.render(data._id);
-			$('#page').append(customeroptionview1.$el);
+   //  		var customeroptionview1 = new pm.customerOptions ();
+   //  		customeroptionview1.render(data._id);
+			// $('#page').append(customeroptionview1.$el);
 
 			var customerequipmentview = new pm.customerEquipmentView (data.equipment, data._id); 		
     		console.dir(data);

@@ -26,10 +26,10 @@ pm.customerListView = Backbone.View.extend({
 pm.customerSearchBox = Backbone.View.extend({
         tagName: 'div',
         className: 'customer-search-box',
-        template2:_.template("<form method='post' id='searchForm' action='/customersearch'>Search: <input type='text' value='enter search terms' id='searchterms'><select id='searchoptions'><option value='nameLast'>Last Name</option><option value='nameFirst'>First Name</option><option value='city'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
+        template2:_.template("<form method='post' id='searchForm' action='/customersearch'><input type='text' value='enter search terms' id='searchterms'><select id='searchoptions'><option value='nameLast'>Last Name</option><option value='nameFirst'>First Name</option><option value='city'>City</option></select><input type='submit' id='customer_search' value='Search'></form>"),
         events: {
             'click #customer_search': 'customerSearch',
-            'keypress #searchterms': 'keypressTimeout'
+            'keyup #searchterms': 'keypressTimeout'
         },
         initialize: function () {
             this.stopTyping;
@@ -42,15 +42,24 @@ pm.customerSearchBox = Backbone.View.extend({
             var searchoptions = $('#searchoptions').val();
             var searchterms = $('#searchterms').val();
 
-            var y = {};
-            y[searchoptions] = searchterms;
-            console.dir(y);
-            
-            $.post('/customersearch', y, function(data) {
-                console.dir(data)
-                customerCollection1.reset(data);
+            if (searchterms == '') {
+                $.get('/customer', function(data) {
+                    console.dir(data)
+                    customerCollection1.reset(data);
 
-            });
+                });                
+            } else {
+
+                var y = {};
+                y[searchoptions] = searchterms;
+                console.dir(y);
+                
+                $.post('/customersearch', y, function(data) {
+                    console.dir(data)
+                    customerCollection1.reset(data);
+
+                });
+            }
         },
         keypressTimeout: function () {
               if (this.stoppedTyping) clearTimeout(this.stoppedTyping);
