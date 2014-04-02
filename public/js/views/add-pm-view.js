@@ -9,7 +9,8 @@ pm.newPMView = Backbone.View.extend({
     split: _.template(pm.templates.splitPM),
     initialize: function (equipment, customerid) {
     	console.dir(equipment);
-    	this.equipmentid = equipment.equipmentid;
+        this.equipmentid = equipment.equipmentid;
+    	this.equipmenttype = equipment.type;
     	this.customerid = customerid;
 		this.$el.append(this[equipment.type](equipment));
 		$('#page').append(this.$el);
@@ -23,7 +24,8 @@ pm.newPMView = Backbone.View.extend({
 
     	w.customerid = this.customerid;
     	w.ticket = $('#pmform').serializeObject();
-    	w.ticket.equipmentid = this.equipmentid;
+        w.ticket.equipmentid = this.equipmentid;
+    	w.ticket.type = this.equipmenttype;
     	
     	$.post('/addpm', w, function() {
         	pm.router.navigate('#/customer/' + w.customerid);

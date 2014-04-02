@@ -67,9 +67,16 @@ pm.customerPMView = Backbone.View.extend ({
         title: _.template("<tr><th>Equipment Type</th><th>Make</th><th>Model</th><th>Last Serviced</th></tr>"),
         pmtemplate: _.template("<tr><th><%= type %></th><th><%= make %></th><th><%= model %></th><th><%= date %></th></tr>"),
         initialize: function (pm) {
+            this.$el.append(this.title);
             pm.forEach(this.renderPM, this);
+            $('#page').append(this.$el);
         },
-        this.renderPM: function (model) {
+        renderPM: function (model) {
+            // var d = model.date;
+            var d = new Date(model.date);
 
+            var c = (d.getMonth() + 1) + " / " + d.getDate() + ' / ' + d.getFullYear();
+            model.date = c;
+            this.$el.append(this.pmtemplate(model));
         }
 });
