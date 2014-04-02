@@ -21,6 +21,9 @@ module.exports = function (app) {
 	app.post('/equipment/:customerid/:type/:make/:model/:serial/:install', mod.newEquipment);
 
 	app.post('/addpm', mod.addpm);
+	app.get('/pm/:customerid/:pmid', mod.findPM);
+
 	app.post('/customersearch', mod.customersearch);
+
 }
 

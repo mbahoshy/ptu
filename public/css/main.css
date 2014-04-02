@@ -38,8 +38,8 @@ h1 {
 	float:left;
 }
 
-#customer_list_table tr {
-	height:40px;
+#customer_list_table td {
+	padding:10px;
 }
 
 #customer_list_table tr:nth-child(even) {
@@ -93,6 +93,24 @@ h1 {
 	float:right;
 	width:33%;
 	background-color: blue;
+}
+
+.customer-pm-list { 
+	float:left;
+	width:66%;
+}
+
+.customer-pm-list td {
+	padding:5px 10px;
+}
+
+.customer-pm-list tr:nth-child(even) {
+	background-color: yellow;
+}
+
+.pm-hover {
+	background-color: red !important;
+	color:white !important;
 }
 
 /* home page styling */

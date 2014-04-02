@@ -65,18 +65,42 @@ pm.customerPMView = Backbone.View.extend ({
         tagName: 'table',
         className: 'customer-pm-list',
         title: _.template("<tr><th>Equipment Type</th><th>Make</th><th>Model</th><th>Last Serviced</th></tr>"),
-        pmtemplate: _.template("<tr><th><%= type %></th><th><%= make %></th><th><%= model %></th><th><%= date %></th></tr>"),
-        initialize: function (pm) {
+        initialize: function (pm, customerid) {
             this.$el.append(this.title);
+            this.customerid = customerid;
             pm.forEach(this.renderPM, this);
             $('#page').append(this.$el);
         },
         renderPM: function (model) {
+            model.customerid = this.customerid;
+            var customerview1 = new pm.customerShortPM({model: model});
+            this.$el.append(customerview1.$el);    
+        }
+});
+
+pm.customerShortPM = Backbone.View.extend({
+        tagName: 'tr',
+        pmtemplate: _.template("<td><%= type %></td><td><%= make %></td><td><%= model %></td><td><%= date %></td>"),
+        events: {
+            'mouseenter': 'pmHover',
+            'mouseleave': 'pmHover',
+            'click': 'loadPMView'
+        },
+        initialize: function () {
             // var d = model.date;
+            model = this.model;
             var d = new Date(model.date);
 
             var c = (d.getMonth() + 1) + " / " + d.getDate() + ' / ' + d.getFullYear();
             model.date = c;
             this.$el.append(this.pmtemplate(model));
+        },
+        pmHover: function () {
+            this.$el.toggleClass('pm-hover');
+        },
+        loadPMView: function () {
+            console.dir(this.model);
+            pm.router.navigate('#/pm/' + this.model.customerid + '/' + this.model.pmid);
         }
+
 });

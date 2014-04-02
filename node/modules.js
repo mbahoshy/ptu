@@ -80,17 +80,27 @@ function addpm (req, res) {
 	console.dir(req.body);
 	var customerid = req.body.customerid,
 		ticket = req.body.ticket,
-		t = new Date();
+		t = new Date(),
+		pmCounter;
 
 	ticket.date = t;
 
 	console.dir(ticket);
 
-	var conditions = { _id: customerid },
-	    options = { multi: false },
-	   	update = { $push: { pm: ticket }};
+	customer.findById(customerid, function(err, data){
+		pmCounter = data.pmCounter;
+		ticket.pmid = pmCounter;
+		pmCounter++;
+		updateCustomer();
+	});
 
-	customer.update(conditions, update, options, callback);
+	function updateCustomer() {
+		var conditions = { _id: customerid },
+		    options = { multi: false },
+		   	update = { $push: { pm: ticket }, $set: {pmCounter: pmCounter}};
+
+		customer.update(conditions, update, options, callback);
+	}
 
 	function callback (err, numAffected) {
 		if(err) throw err;
@@ -99,6 +109,9 @@ function addpm (req, res) {
 
 }
 
+function findPM (req, res) {
+
+}
 
 function customersearch (req, res){
 	console.dir(req.body);
@@ -119,6 +132,7 @@ function customersearch (req, res){
 
 
 exports.addpm = addpm;
+exports.findPM = findPM;
 exports.newCustomer = newCustomer;
 exports.customerId = customerId;
 exports.returnCustomers = returnCustomers;

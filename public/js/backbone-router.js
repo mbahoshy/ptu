@@ -1,14 +1,13 @@
 var pm = window.pm = {};
 pm.templates = {};
-
 pm.Router = Backbone.Router.extend({
     routes: {
         "newcustomer": "createCustomer", //create new customer
         "home": "home", //create new customer
         "customer/:customerid": "displayCustomer", //create new customer
         "addequipment/:customerid": "addEquipment", //add equipment to exsiting customer
-        "addpm/:customerid/:equipmentid": "addPM" //add service to existing equipment
-
+        "addpm/:customerid/:equipmentid": "addPM", //add service to existing equipment
+        "pm/:customerid/:pmid": "viewPM"
     },
     createCustomer: function () {
         this.clearBody();
@@ -23,8 +22,7 @@ pm.Router = Backbone.Router.extend({
 
     		var customerdetailview1 = new pm.customerDetailView (data);
     		
-
-    		var customerpmview1 = new pm.customerPMView (data.pm);
+    		var customerpmview1 = new pm.customerPMView (data.pm, customerid);
    //  		var customeroptionview1 = new pm.customerOptions ();
    //  		customeroptionview1.render(data._id);
 			// $('#page').append(customeroptionview1.$el);
@@ -74,7 +72,18 @@ pm.Router = Backbone.Router.extend({
     	});
 
     },
+    viewPM: function (customerid, pmid) {
+    	this.clearBody();
+    	var ticket,
+    		pmidint = parseInt(pmid);
 
+    	$.get('/customerid/' + customerid, function (data) {
+    		ticket = _.findWhere(data.pm, {"pmid": pmidint});
+    		console.dir(ticket);
+    		var pmdetailview1 = new pm.pmDetailView (ticket);
+    	});
+    	
+    },
     clearBody: function() {
     	$('#page').html('');
     }
