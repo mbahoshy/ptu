@@ -36,6 +36,7 @@ h1 {
 #customer_list_table {
 	width:66%;
 	float:left;
+	border-collapse: collapse;
 }
 
 #customer_list_table td {
@@ -43,7 +44,7 @@ h1 {
 }
 
 #customer_list_table tr:nth-child(even) {
-	background-color: yellow;
+	background-color: rgb(229, 254, 255);
 }
 
 
@@ -188,5 +189,11 @@ h1 {
 #new_customer {
 	background-color: red;
 	color:white;
+	float:right;
+	padding:15px 30px;
+	border:1px solid red;
+	font-weight: bold;
+	box-shadow: 2px 2px 2px #CCCCCC;
+	border-radius: 5px;
 }
 

@@ -97,7 +97,7 @@ pm.customerShortView = Backbone.View.extend({
 pm.homeOptions = Backbone.View.extend ({
         tagName: 'div',
         className: 'home-options',
-        template2:_.template("<a href='#/newcustomer'><div class='button' id='new_customer'>New Customer</div></a>"),
+        template2:_.template("<a href='#/newcustomer'><div id='new_customer'>New Customer</div></a>"),
         initialize: function () {
             this.$el.append( this.template2() );
             $('#page').append(this.$el);
