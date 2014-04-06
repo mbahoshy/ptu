@@ -75,9 +75,7 @@ pm.customerShortView = Backbone.View.extend({
         className: '',
         template: _.template("<td><%= nameLast %></td><td><%= nameFirst %></td><td><%= address.street %></td><td><%= address.city %></td>"),
         events: {
-                'click': 'viewCustomer',
-                'mouseenter': 'hoverCustomer',
-                'mouseleave': 'hoverCustomer'
+                'click': 'viewCustomer'
         },
         render : function () {
                 this.$el.html( this.template(this.model.toJSON()) );
@@ -87,9 +85,6 @@ pm.customerShortView = Backbone.View.extend({
         viewCustomer: function () {
                 console.log(this.customerId);
                 pm.router.navigate('#/customer/' + this.customerId);
-        },
-        hoverCustomer: function () {
-                this.$el.toggleClass('customer-hover');
         }
 });
 
@@ -97,7 +92,7 @@ pm.customerShortView = Backbone.View.extend({
 pm.homeOptions = Backbone.View.extend ({
         tagName: 'div',
         className: 'home-options',
-        template2:_.template("<a href='#/newcustomer'><div id='new_customer'>New Customer</div></a>"),
+        template2:_.template("<a href='#/newcustomer'><div class='green-button' id='new_customer'>New Customer</div></a>"),
         initialize: function () {
             this.$el.append( this.template2() );
             $('#page').append(this.$el);

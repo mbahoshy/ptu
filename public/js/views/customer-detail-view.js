@@ -32,8 +32,8 @@ pm.customerEquipmentView = Backbone.View.extend({
 		tagName: 'div',
         className: 'customer-equipment-container',
         title: _.template("<div>Current Equipment</div>"),
-        template: _.template("<div class='customer-equipment'><p><%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><div class='equipment-history'>View History</div><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
-        addequiptemplate: _.template("<div id='add_equip'>Add Equipment</div>"),
+        template: _.template("<div class='customer-equipment'><p><%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><div class='equipment-history blue-button'>View History</div><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
+        addequiptemplate: _.template("<div class='green-button' id='add_equip'>Add Equipment</div>"),
 
         events: {
         	'click .create-pm': 'createPM',

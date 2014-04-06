@@ -1,22 +1,22 @@
 pm.templates.gasPM = "\
 	<form id='pmform'>\
-	<div>Make: <input type='text' name='make' value='<%= make %>'></div>\
-	<div>Model: <input type='text' name='model' value='<%= model %>'></div>\
-	<div>Serial: <input type='text' name='serial' value='<%= serial %>'></div>\
-	<div>Pressure Switches: <input type='checkbox' name='pressureswitch' value=''></div>\
-	<div>Fan Relay: <input type='checkbox' name='fanrelay' value=''></div>\
-	<div>Clean Flame Sensor: <input type='checkbox' name='flamesensor' value=''></div>\
-	<div>Hot Surface Ignitor (cold ohms): <input type='text' name='hsi' value=''> ohms</div>\
-	<div>Inspect Blower Motor: <input type='checkbox' name='blowercheck' value=''></div>\
-	<div>Blower Amps: <input type='text' name='bloweramps'></div>\
-	<div>Capacitor:\
-		<p>Rated: <input type='text' name='caprated1'></p>\
-		<p>Actual: <input type='text' name='capact1'></p>\
+	<div><label>Make:</label><input type='text' name='make' value='<%= make %>'></div>\
+	<div><label>Model:</label><input type='text' name='model' value='<%= model %>'></div>\
+	<div><label>Serial:</label><input type='text' name='serial' value='<%= serial %>'></div>\
+	<div><label>Pressure Switches:</label><input type='checkbox' name='pressureswitch' value=''></div>\
+	<div><label>Fan Relay:</label><input type='checkbox' name='fanrelay' value=''></div>\
+	<div><label>Clean Flame Sensor:</label><input type='checkbox' name='flamesensor' value=''></div>\
+	<div><label>Hot Surface Ignitor (cold ohms):</label><input type='text' name='hsi' value=''></div>\
+	<div><label>Inspect Blower Motor:</label><input type='checkbox' name='blowercheck' value=''></div>\
+	<div><label>Blower Amps:</label><input type='text' name='bloweramps'></div>\
+	<div><label>Capacitor:</label>\
+		<p><label>Rated:</label><input type='text' name='caprated1'></p>\
+		<p><label>Actual:</label><input type='text' name='capact1'></p>\
 	</div>\
-	<div>Inspect Heat Exchanger: <input type='checkbox' name='heatex' value=''></div>\
-	<div>Gas Pressures:\
-		<p>High: <input type='text' name='highgas' value=''></p>\
-		<p>Low: <input type='text' name='lowgas' value=''></p>\
+	<div><label>Inspect Heat Exchanger:</label><input type='checkbox' name='heatex' value=''></div>\
+	<div><label>Gas Pressures:</label>\
+		<p><label>High:</label><input type='text' name='highgas' value=''></p>\
+		<p><label>Low:</label><input type='text' name='lowgas' value=''></p>\
 	</div>\
 	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\

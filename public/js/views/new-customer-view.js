@@ -1,7 +1,8 @@
 pm.newCustomerView = Backbone.View.extend({
         tagName: 'div',
+        id:'new_customer_form',
         className: '',
-        template: _.template("<form method='POST' action='/newcustomer' id='form'>First name: <input type='text' id='nameFirst'><br>Last name: <input type='text' id='nameLast'><br>Email: <input type='text' id='email'><br>Street: <input type='text' id='street'><br>City: <input type='text' id='city'><br>Zip: <input type='text' id='zip'><br><input type='submit' id='submit' value='Submit'></form>"),
+        template: _.template("<form method='POST' action='/newcustomer' id='form'><label>First name:</label><input type='text' id='nameFirst'><label>Last name:</label><input type='text' id='nameLast'><label>Email:</label><input type='text' id='email'><label>Street:</label><input type='text' id='street'><label>City:</label><input type='text' id='city'><label>Zip:</label><input type='text' id='zip'><input type='submit' class='blue-button' id='submit' value='Submit'></form>"),
         events: {
                 "click #submit": "submitCustomer"
         },

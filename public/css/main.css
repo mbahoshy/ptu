@@ -23,11 +23,6 @@ h1 {
 	margin: 0;
 }
 
-.customer-hover {
-	background-color: red !important;
-	color:white !important;
-}
-
 .home-options {
 	float:right;
 	width:33%;
@@ -47,6 +42,10 @@ h1 {
 	background-color: rgb(229, 254, 255);
 }
 
+#customer_list_table tr:hover {
+	background-color: #0D989E !important;
+	color: white !important;
+}
 
 
 .equipment-option {
@@ -59,6 +58,36 @@ h1 {
 	padding: 50px 0;
 	float:left;
 	text-align: center;
+}
+
+#pmform input {
+	float:right;
+	clear:right;
+	height:30px;
+	border: 1px solid #CCCCCC;
+	margin:5px 0;
+}
+
+#pmform label {
+	float:left;
+	height:30px;
+	clear:left;
+	padding: 1px 0;
+	margin:5px 0;
+}
+
+#pmform {
+	width:45%;
+	margin:0 auto;
+}
+
+#pmform #submit {
+	height:30px;
+	background-color: white;
+	border:1px solid rgb(0, 0, 128);
+	padding:0 15px;
+	margin-top: 20px;
+	color:rgb(0, 0, 128);
 }
 
 .customer-equipment {
@@ -93,43 +122,34 @@ h1 {
 .customer-equipment-container {
 	float:right;
 	width:33%;
-	background-color: blue;
 }
 
-.customer-pm-list { 
-	float:left;
+
+.customer-pm-list {
 	width:66%;
+	float:left;
+	border-collapse: collapse;
 }
 
 .customer-pm-list td {
-	padding:5px 10px;
+	padding:10px;
 }
 
 .customer-pm-list tr:nth-child(even) {
-	background-color: yellow;
+	background-color: rgb(229, 254, 255);
 }
+
+.customer-pm-list tr:hover {
+	background-color: #0D989E !important;
+	color: white !important;
+}
+
 
 .pm-hover {
 	background-color: red !important;
 	color:white !important;
 }
 
-.create-pm {
-	background-color: red;
-	color:white;
-	padding:10px 25px;
-	text-align: center;
-	border-radius: 5px;
-	box-shadow: 2px 2px 2px #3C3C3C;
-}
-
-.equipment-history {
-	background-color: grey;
-	padding:10px 25px;
-	text-align: center;
-	border-radius: 5px;
-	box-shadow: 2px 2px 2px #3C3C3C;
-}
 
 
 /* home page styling */
@@ -176,24 +196,86 @@ h1 {
 	border-radius: 10px;
 }
 
-#add_equip {
-	background-color: green;
+.green-button {
+	padding:15px 30px;
+	border:1px solid #006900;
+	font-weight: bold;
+	box-shadow: 0px -2px 2px #006900 inset;
+	border-radius: 5px;
+	background-color: rgba(39, 184, 12, 1);
 	color:white;
-	width:66%;
+}
+
+.green-button:hover {
+	background-color: rgba(39, 184, 12, .75);
+	border:1px solid rgba(0, 105, 0, 0.75);
+}
+
+.blue-button {
+	background-color: white;
+	border:1px solid rgb(0, 0, 128);
+	color:rgb(0, 0, 128);
+}
+
+.blue-button:hover {
+	color:white;
+	background-color: rgb(0, 0, 128);
+
+}
+
+.create-pm {
+	background-color: white;
+	color:red;
+	padding:10px 0px;
+	width:50%;
 	margin:0 auto;
 	text-align: center;
-	padding:15px 0;
-	border-radius: 10px;
+	border: 1px solid red;
+	box-shadow: 2px 2px 2px #3C3C3C;
+}
+
+.equipment-history {
+	padding:10px 0px;
+	width:50%;
+	margin:0 auto;
+	text-align: center;
+/*	box-shadow: 2px 2px 2px #3C3C3C;
+	border:1px solid #CCCCCC;*/
+}
+
+#add_equip {
+	float: right;
+	/*width:45%;*/
 }
 
 #new_customer {
-	background-color: red;
-	color:white;
 	float:right;
-	padding:15px 30px;
-	border:1px solid red;
-	font-weight: bold;
-	box-shadow: 2px 2px 2px #CCCCCC;
-	border-radius: 5px;
 }
 
+#new_customer_form {
+	width:33%;
+	margin: 0 auto;
+
+}
+
+#new_customer_form input {
+	float:right;
+	clear:right;
+	height:30px;
+	border: 1px solid #CCCCCC;
+	margin:5px 0;
+}
+
+#new_customer_form label {
+	float:left;
+	height:30px;
+	clear:left;
+	padding: 1px 0;
+	margin:5px 0;
+}
+
+#new_customer_form #submit {
+	height:30px;
+	padding:0 15px;
+	margin-top: 20px;
+}
