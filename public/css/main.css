@@ -279,3 +279,48 @@ h1 {
 	padding:0 15px;
 	margin-top: 20px;
 }
+
+.pmview {
+	width:80%;
+	margin: 0 auto;
+	background-color: white;
+	margin:40px;
+	border:1px solid #CCCCCC;
+	padding:20px 5%;
+	float:left;
+	box-shadow: 0px -5px 5px #AAAAAA inset;
+
+}
+
+.pmview label {
+	float:left;
+	clear:left;
+	padding:5px 5% ;
+	margin:5px 0;
+}
+
+.pmview span {
+	float:right;
+	clear:right;
+	padding:5px 5% ;
+	margin:5px 0;	
+}
+
+.pmview div {
+	float:left;
+	width:50%;
+}
+
+.pmview div:nth-child(4n+1), .pmview div:nth-child(4n+2) {
+	background-color: rgb(235, 235, 235);
+}
+
+
+.fleft {float:left;}
+
+.fright {float:right;}
+
+@media screen and (max-width: 650px) {
+	.pmview div {width:100%;}
+
+}

@@ -1,29 +1,27 @@
 pm.templates.gasPMView = "\
-	<div id='pmview'>\
-		<div>Make: <%= make %></div>\
-		<div>Model: <%= model %></div>\
-		<div>Serial: <%= serial %></div>\
-		<div>Pressure Switches: </div>\
-		<div>Fan Relay: </div>\
-		<div>Clean Flame Sensor: </div>\
-		<div>Hot Surface Ignitor (cold ohms): <%= hsi %> ohms</div>\
-		<div>Inspect Blower Motor: </div>\
-		<div>Blower Amps: </div>\
-		<div>Capacitor:\
-			<p>Rated: <%= caprated1 %></p>\
-			<p>Actual: <%= capact1 %></p>\
-		</div>\
-		<div>Inspect Heat Exchanger: </div>\
-		<div>Gas Pressures:\
-			<p>High: <%= highgas %><p>\
-			<p>Low: <%= lowgas %></p>\
-		</div>\
+	<div class='pmview'>\
+			<div><label>Make:</label><span><%= make %></span></div>\
+			<div><label>Model:</label><span><%= model %></span></div>\
+			<div><label>Serial:</label><span><%= serial %></span></div>\
+			<div><label>Pressure Switches:</label></div>\
+			<div><label>Fan Relay:</label></div>\
+			<div><label>Clean Flame Sensor:</label></div>\
+			<div><label>Hot Surface Ignitor:</label><span><%= hsi %> ohms</span></div>\
+			<div><label>Inspect Blower Motor:</label></div>\
+			<div><label>Blower Amps:</label></div>\
+			<div><label>Capacitor:</label></div>\
+			<div><label>Rated:</label><span><%= caprated1 %></span></div>\
+			<div><label>Actual:</label><span><%= capact1 %></span></div>\
+			<div><label>Inspect Heat Exchanger:</label></div>\
+			<div><label>Gas Pressures:</label></div>\
+			<div><label>High:</label><span><%= highgas %></span></div>\
+			<div><label>Low:</label><span><%= lowgas %></span></div>\
 	</div>\
 ";
 
 
 pm.templates.electricPMView = "\
-	<div id='pmview'>\
+	<div class='pmview'>\
 		<div>Make: <%= make %></div>\
 		<div>Model: <%= model %></div>\
 		<div>Serial: <%= serial %></div>\
@@ -43,7 +41,7 @@ pm.templates.electricPMView = "\
 ";
 
 pm.templates.acPMView = "\
-	<div id='pmview'>\
+	<div class='pmview'>\
 		<div>Make: <%= make %></div>\
 		<div>Model: <%= model %></div>\
 		<div>Serial: <%= serial %></div>\
@@ -67,7 +65,7 @@ pm.templates.acPMView = "\
 ";
 
 pm.templates.heatpumpPMView = "\
-	<div id='pmview'>\
+	<div class='pmview'>\
 		<div>Make: <%= make %></div>\
 		<div>Model: <%= model %></div>\
 		<div>Serial: <%= serial %></div>\
@@ -91,7 +89,7 @@ pm.templates.heatpumpPMView = "\
 ";
 
 pm.templates.airhandlerPMView = "\
-	<div id='pmview'>\
+	<div class='pmview'>\
 		<div>Make: <%= make %></div>\
 		<div>Model: <%= model %></div>\
 		<div>Serial: <%= serial %></div>\
@@ -105,7 +103,7 @@ pm.templates.airhandlerPMView = "\
 ";
 
 pm.templates.splitPMView = "\
-	<div id='pmview'>\
+	<div class='pmview'>\
 		<div>Make: <%= make %></div>\
 		<div>Model: <%= model %></div>\
 		<div>Serial: <%= serial %></div>\

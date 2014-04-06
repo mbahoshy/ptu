@@ -34,8 +34,9 @@ pm.Router = Backbone.Router.extend({
     viewEquipHistory: function (customerid, equipmentid) {
         this.clearBody();
         $.get('/customerid/' + customerid, function (data) {
-            var z = _.where(data.pm, {equipmentid: equipmentid});
-            console.dir(z);
+            var tickets = _.where(data.pm, {equipmentid: equipmentid});
+            var equipmenthistoryview1 = new pm.equipmentHistoryView(tickets);
+
 
         });
 
