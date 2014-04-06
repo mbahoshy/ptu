@@ -9,9 +9,27 @@
 	<script src="/libs/underscore.js"></script>
 	<script src="/libs/backbone.js"></script>
 
-	<!-- router -->
-	<script src="/js/backbone-router.js"></script>
+	<script type='text/javascript'>
+		var pm = window.pm = {};
+		pm.templates = {};
 
+		$.fn.serializeObject = function()
+		{
+		    var o = {};
+		    var a = this.serializeArray();
+		    $.each(a, function() {
+		        if (o[this.name] !== undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            o[this.name].push(this.value || '');
+		        } else {
+		            o[this.name] = this.value || '';
+		        }
+		    });
+		    return o;
+		};
+	</script>
 
 	<!-- models -->
 	<script src="/js/models/customer-model.js"></script>
@@ -31,27 +49,12 @@
 	<script src="/js/views/add-equipment-view.js"></script>
 	<script src="/js/views/add-pm-view.js"></script>
 	<script src="/js/views/pm-detail-view.js"></script>
+	<script src="/js/views/equipment-history-view.js"></script>
+
+	<!-- router -->
+	<script src="/js/backbone-router.js"></script>
 
 
-	<script type='text/javascript'>
-
-		$.fn.serializeObject = function()
-		{
-		    var o = {};
-		    var a = this.serializeArray();
-		    $.each(a, function() {
-		        if (o[this.name] !== undefined) {
-		            if (!o[this.name].push) {
-		                o[this.name] = [o[this.name]];
-		            }
-		            o[this.name].push(this.value || '');
-		        } else {
-		            o[this.name] = this.value || '';
-		        }
-		    });
-		    return o;
-		};
-	</script>
 </head>
 <body>
 

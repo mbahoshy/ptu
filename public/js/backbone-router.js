@@ -1,5 +1,3 @@
-var pm = window.pm = {};
-pm.templates = {};
 pm.Router = Backbone.Router.extend({
     routes: {
         "newcustomer": "createCustomer", //create new customer
@@ -7,7 +5,8 @@ pm.Router = Backbone.Router.extend({
         "customer/:customerid": "displayCustomer", //create new customer
         "addequipment/:customerid": "addEquipment", //add equipment to exsiting customer
         "addpm/:customerid/:equipmentid": "addPM", //add service to existing equipment
-        "pm/:customerid/:pmid": "viewPM"
+        "pm/:customerid/:pmid": "viewPM",
+        "equipmenthistory/:customerid/:equipmentid": "viewEquipHistory"
     },
     createCustomer: function () {
         this.clearBody();
@@ -30,6 +29,17 @@ pm.Router = Backbone.Router.extend({
 			var customerequipmentview = new pm.customerEquipmentView (data.equipment, data._id); 		
     		console.dir(data);
     	});
+    },
+
+    viewEquipHistory: function (customerid, equipmentid) {
+        this.clearBody();
+        $.get('/customerid/' + customerid, function (data) {
+            var z = _.where(data.pm, {equipmentid: equipmentid});
+            console.dir(z);
+
+        });
+
+
 
     },
 

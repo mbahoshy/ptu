@@ -5,7 +5,7 @@ var mod = require('../node/modules');
 module.exports = function (app) {
 
 	//responds with index.html
-	app.get("#", function(req, res) {
+	app.get("/", function(req, res) {
 		console.log('index');
 		// res.redirect("/index.html");
 

@@ -32,11 +32,12 @@ pm.customerEquipmentView = Backbone.View.extend({
 		tagName: 'div',
         className: 'customer-equipment-container',
         title: _.template("<div>Current Equipment</div>"),
-        template: _.template("<div class='customer-equipment'><p><%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><div class='equipment-history blue-button'>View History</div><div id='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
+        template: _.template("<div class='customer-equipment'><p><%= type %></p><p>Make: <%= make %></p><p>Model #: <%= model %></p><p>Serial #: <%= serial %></p><div data-eid='<%= equipmentid %>' class='equipment-history blue-button'>View History</div><div data-eid='<%= equipmentid %>' class='create-pm'>Create PM</div></div>"),
         addequiptemplate: _.template("<div class='green-button' id='add_equip'>Add Equipment</div>"),
 
         events: {
         	'click .create-pm': 'createPM',
+            'click .equipment-history': 'viewHistory',
             'click #add_equip': 'addEquip'
         },
         initialize: function (equipment, customerid) {
@@ -51,13 +52,17 @@ pm.customerEquipmentView = Backbone.View.extend({
         },
         createPM: function (e) {
         	// e.target.id = equipmentid
-        	pm.router.navigate('#/addpm/' + this.customerid + '/' + e.target.id);
+        	pm.router.navigate('#/addpm/' + this.customerid + '/' + $(e.target).data('eid'));
         	console.dir("create service clicked");
         },
         addEquip: function () {
             console.log("add equipment");
             // console.log(this.customerid);
             pm.router.navigate('#/addequipment/' + this.customerid);
+        },
+        viewHistory: function (e) {
+            pm.router.navigate('#/equipmenthistory/' + this.customerid + '/' + $(e.target).data('eid'));
+
         }
 });
 
