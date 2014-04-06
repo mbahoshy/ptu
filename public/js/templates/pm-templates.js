@@ -3,9 +3,23 @@ pm.templates.gasPM = "\
 	<div><label>Make:</label><input type='text' name='make' value='<%= make %>'></div>\
 	<div><label>Model:</label><input type='text' name='model' value='<%= model %>'></div>\
 	<div><label>Serial:</label><input type='text' name='serial' value='<%= serial %>'></div>\
-	<div><label>Pressure Switches:</label><input type='checkbox' name='pressureswitch' value=''></div>\
-	<div><label>Fan Relay:</label><input type='checkbox' name='fanrelay' value=''></div>\
-	<div><label>Clean Flame Sensor:</label><input type='checkbox' name='flamesensor' value=''></div>\
+	<div><label>Pressure Switches:</label>\
+		<span>\
+		<div class='styled-check'>\
+			<input type='checkbox' value='None' id='press1' name='pressureswitch' />\
+			<label for='press1'><div class='styled-check-inner'></div></label>\
+		</div>\
+		</span>\
+	<div><label>Fan Relay:</label>\
+		<div class='styled-check'>\
+			<input type='checkbox' value='None' id='flame1' name='fanrelay' />\
+			<label for='flame1'><div class='styled-check-inner'></div></label>\
+		</div>\
+	<div><label>Clean Flame Sensor:</label>\
+		<div class='styled-check'>\
+			<input type='checkbox' value='None' id='cap1' name='flamesensor' />\
+			<label for='cap1'><div class='styled-check-inner'></div></label>\
+		</div>\
 	<div><label>Hot Surface Ignitor (cold ohms):</label><input type='text' name='hsi' value=''></div>\
 	<div><label>Inspect Blower Motor:</label><input type='checkbox' name='blowercheck' value=''></div>\
 	<div><label>Blower Amps:</label><input type='text' name='bloweramps'></div>\
@@ -21,7 +35,6 @@ pm.templates.gasPM = "\
 	<input id='submit_pm' type='submit' value='Submit'>\
 	</form>\
 ";
-
 
 pm.templates.electricPM = "\
 	<form>\

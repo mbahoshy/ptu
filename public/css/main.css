@@ -324,3 +324,50 @@ h1 {
 	.pmview div {width:100%;}
 
 }
+
+
+
+
+input[type=checkbox] {
+	visibility: hidden;
+	display: none;
+}
+
+.styled-check {
+	float:right;
+}
+
+
+.styled-check label {
+	width:30px;
+	height:30px;
+	background-color: rgba(177, 177, 177, 0.98);
+	position:relative;
+	border-radius: 12px;
+	margin:0 !important;
+	padding:0 !important;
+}
+
+.styled-check-inner {
+	position: absolute;
+	top:0;
+	left:0;
+	width:16px;
+	height:16px !important;
+	border:2px solid #CCCCCC;
+	border-radius: 5px;
+	background-color: #918E8E;
+	margin:5px !important;
+
+}
+
+.styled-check input[type=checkbox]:checked + label {
+	background-color: #918E8E;
+
+}
+
+
+.styled-check input[type=checkbox]:checked + label .styled-check-inner {
+	background-color: rgb(0, 172, 0);
+
+}

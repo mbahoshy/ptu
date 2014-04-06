@@ -14,8 +14,6 @@ pm.equipmentHistoryView = Backbone.View.extend ({
 			this.$el.append( this.containertemplate);
 			this.tickets = tickets;
 			this.ticketView();
-    		       
-
         },
         createView: function (model) {
         	var eh = new pm.equipmentHistoryPM (model);
