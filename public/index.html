@@ -8,10 +8,12 @@
 	<script src="/libs/jquery.js"></script>
 	<script src="/libs/underscore.js"></script>
 	<script src="/libs/backbone.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 	<script type='text/javascript'>
 		var pm = window.pm = {};
 		pm.templates = {};
+        google.load("visualization", "1", {packages:["corechart"]});
 
 		$.fn.serializeObject = function()
 		{

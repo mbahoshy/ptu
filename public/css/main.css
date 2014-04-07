@@ -371,3 +371,9 @@ input[type=checkbox] {
 	background-color: rgb(0, 172, 0);
 
 }
+
+
+#chart_div {
+	width: 90%;
+	height:500px;
+}
