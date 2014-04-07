@@ -67,11 +67,12 @@ pm.equipmentPartHistory = Backbone.View.extend ({
                 } else {
                     highgas = parseFloat(data.highgas);
                 }
-
                 return [new Date(data.date), lowgas, highgas];
             });
 
-        
+            var dataarray = ['Date', 'lowgas', 'highgas'];
+            // dates.unshift(dataarray);
+            console.dir(dates);
             this.$el.append(this.template);
             $('#page').append(this.$el);
             this.drawGraph(dates);
@@ -88,16 +89,19 @@ pm.equipmentPartHistory = Backbone.View.extend ({
                 dataTable.addColumn('number', 'highgas');
                 dataTable.addRows(chartdata);
                 console.dir(chartdata);
-                
-                var dataView = new google.visualization.DataView(dataTable);
-                dataView.setColumns([{calc: function(data, row) { return data.getFormattedValue(row, 0); }, type:'string'}, 1]);
+                // var data = google.visualization.arrayToDataTable(chartdata);                
+
+                // console.dir(data);
+
+                // var dataView = new google.visualization.DataView(dataTable);
+                // dataView.setColumns([{calc: function(data, row) { return data.getFormattedValue(row, 0); }, type:'string'}, 1]);
 
                 var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
                 var options = {
                     legend: 'none',
                     pointSize: 5
                 };
-                chart.draw(dataView, options);
+                chart.draw(dataTable, options);
 
               }
         }
