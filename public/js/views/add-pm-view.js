@@ -26,7 +26,8 @@ pm.newPMView = Backbone.View.extend({
     	w.ticket = $('#pmform').serializeObject();
         w.ticket.equipmentid = this.equipmentid;
     	w.ticket.type = this.equipmenttype;
-    	
+    	console.dir(w);
+
     	$.post('/addpm', w, function() {
         	pm.router.navigate('#/customer/' + w.customerid);
 

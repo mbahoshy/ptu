@@ -6,29 +6,38 @@ pm.templates.gasPM = "\
 	<div><label>Pressure Switches:</label>\
 		<span>\
 		<div class='styled-check'>\
-			<input type='checkbox' value='None' id='press1' name='pressureswitch' />\
+			<input type='checkbox' value='true' id='press1' name='pressureswitch' />\
 			<label for='press1'><div class='styled-check-inner'></div></label>\
 		</div>\
 		</span>\
 	<div><label>Fan Relay:</label>\
 		<div class='styled-check'>\
-			<input type='checkbox' value='None' id='flame1' name='fanrelay' />\
+			<input type='checkbox' value='true' id='flame1' name='fanrelay' />\
 			<label for='flame1'><div class='styled-check-inner'></div></label>\
 		</div>\
 	<div><label>Clean Flame Sensor:</label>\
 		<div class='styled-check'>\
-			<input type='checkbox' value='None' id='cap1' name='flamesensor' />\
+			<input type='checkbox' value='true' id='cap1' name='flamesensor' />\
 			<label for='cap1'><div class='styled-check-inner'></div></label>\
 		</div>\
 	<div><label>Hot Surface Ignitor (cold ohms):</label><input type='text' name='hsi' value=''></div>\
-	<div><label>Inspect Blower Motor:</label><input type='checkbox' name='blowercheck' value=''></div>\
+	<div><label>Inspect Blower Motor:</label>\
+		<div class='styled-check'>\
+			<input type='checkbox' value='true' id='motor1' name='blowercheck' />\
+			<label for='motor1'><div class='styled-check-inner'></div></label>\
+		</div>\
 	<div><label>Blower Amps:</label><input type='text' name='bloweramps'></div>\
-	<div><label>Capacitor:</label>\
+	<div><label><i>Capacitor</i></label>\
 		<p><label>Rated:</label><input type='text' name='caprated1'></p>\
 		<p><label>Actual:</label><input type='text' name='capact1'></p>\
 	</div>\
-	<div><label>Inspect Heat Exchanger:</label><input type='checkbox' name='heatex' value=''></div>\
-	<div><label>Gas Pressures:</label>\
+	<div><label>Inspect Heat Exchanger:</label>\
+		<div class='styled-check'>\
+			<input type='checkbox' value='true' id='heat1' name='heatex' />\
+			<label for='heat1'><div class='styled-check-inner'></div></label>\
+		</div>\
+	</div>\
+	<div><label><i>Gas Pressures</i></label>\
 		<p><label>High:</label><input type='text' name='highgas' value=''></p>\
 		<p><label>Low:</label><input type='text' name='lowgas' value=''></p>\
 	</div>\
