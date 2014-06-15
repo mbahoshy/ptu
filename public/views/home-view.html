@@ -1,0 +1,31 @@
+<!-- home-view.html -->
+
+<div>
+	<div class='search-container'>
+		<form>
+			<input type='text' placeholder='enter search terms' name='searchterms'>
+			<select>
+				<option>Last Name</option>
+				<option>First Name</option>
+				<option>City Name</option>
+			</select>
+			<input type='submit' value='Search'>
+		</form>
+	</div>
+
+	<table class='customer-listings'>
+		<tr>
+			<th>Last Name</th>
+			<th>First Name</th>
+			<th>Street</th>
+			<th>City</th>
+		</tr>
+		<tr ng-repeat='customer in customerList'>
+			<td>{{customer.nameLast}}</td>
+			<td>{{customer.nameFirst}}</td>
+			<td>{{customer.address.street}}</td>
+			<td>{{customer.address.city}}</td>
+		</tr>
+	</table>
+
+</div>
