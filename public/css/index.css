@@ -1,0 +1,19 @@
+.search-container {
+  float: left;
+  width: 100%;
+}
+.customer-listings {
+  width: 90%;
+  float: left;
+  border-collapse: collapse;
+}
+.customer-listings tr:nth-child(even) {
+  background-color: #cccccc;
+}
+.customer-listings tr:hover {
+  background-color: #ff0000;
+}
+.customer-listings td,
+.customer-listings th {
+  padding: 10px;
+}

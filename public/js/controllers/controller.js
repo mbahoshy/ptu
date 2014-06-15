@@ -8,5 +8,43 @@ ptu.controller("HomeController", function ($scope, $http) {
 	});
 
 
+	$scope.customerClick = function (customer) {
+		console.dir(customer);
+	}
+
+	$scope.instantSearch = function () {
+		if (this.stoppedTyping) clearTimeout(this.stoppedTyping);
+		// set a new timer to execute 3 seconds from last keypress
+		this.stoppedTyping = setTimeout(function(){
+		    // $('#customer_search').trigger('click');
+		    $scope.search();
+		}, 100); 
+	}
+
+	$scope.search = function () {
+
+
+	    var searchterms = $scope.search.terms.toUpperCase();
+	    var searchparameters = 'search.' + $scope.search.parameters;
+	    console.log(searchterms);
+	    console.log(searchparameters);
+
+	    if (searchterms == '') {
+	        $.get('/customer', function(data) {
+	            $scope.customerList = data;
+
+	        });                
+	    } else {
+
+	        var y = {};
+	        y[searchparameters] = searchterms;
+
+	        $http.post('/customersearch', y).success(function(data, status) {
+	            $scope.customerList = data;
+	            console.dir(data);
+	        });
+	    }
+	}
+
 	console.log('home page');
 });

@@ -34,23 +34,39 @@ module.exports = function(grunt) {
 		      }
 		    }
 		},
+	    less: {
+	      style: {
+	        files: {
+	          "public/css/index.css": "less/index.less"
+	        }
+	      }
+	    },
+
 		watch: {
-
-		    files: ['public/**/*', 'node/**/*'],
-		    tasks: ['console'],
-		    options: {
-		      spawn: false,
-		      livereload: {
-			    // port: 3000,
-			  }
+			js:{
+			    files: ['public/**/*', 'node/**/*'],
+			    tasks: ['console'],
+			    options: {
+			      spawn: false,
+			      livereload: {
+				    // port: 3000,
+				  }
+			    }
+			},
+			css: {
+		        files: ['less/*.less'],
+		        tasks: ['less:style'],
+		        options: {
+		          livereload: true,
+		        }
 		    }
-
 		}
 	});
 
 	// load npm tasks
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-express-server');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// register tasks
 	grunt.registerTask('default', ['express:dev', 'watch']);
