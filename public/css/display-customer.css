@@ -1,23 +1,7 @@
 /* display-customer.less */
-.table-styling {
-  border-collapse: collapse;
-  width: 80%;
-  float: left;
-  margin: 0 10%;
-}
-.table-styling td,
-.table-styling th {
-  padding: 10px;
-}
-.table-styling tr:nth-child(even) {
-  background-color: #cccccc;
-}
-.table-styling tr:hover {
-  background-color: #ff0000;
-}
 .pm-history-container {
   border-collapse: collapse;
-  width: 80%;
+  width: 60%;
   float: left;
   margin: 0 10%;
 }

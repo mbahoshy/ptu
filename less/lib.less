@@ -11,11 +11,11 @@
 	-moz-border-radius: @radius;
 }
 
-.table-styling {
+.table-styling (@width: 80%, @margin:10%) {
 	border-collapse:collapse;
-	width: 80%;
+	width: @width;
 	float: left;
-	margin:0 10%;
+	margin:0 @margin;
 	td, th {
 		padding: 10px;	
 	}
