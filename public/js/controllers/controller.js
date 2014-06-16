@@ -51,12 +51,27 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	console.log('home page');
 });
 
-ptu.controller("displayCustomerController", function ($scope, $http, $routeParams) {
+ptu.controller("displayCustomerController", function ($scope, $http, $routeParams, $rootScope) {
+	var id = $routeParams.id;
 
-	var id = $routeParams.id
 	console.log('display customer' + id);
 	$http.get('/customerid/' + id).success(function(data, status) {
 		console.dir(data);
 		$scope.customer = data;
+		$rootScope.navArray.push({
+			title: data.nameLast + ', ' + data.nameFirst,
+			data: data
+		});
+		$rootScope.$emit('updateNav');
 	});
+});
+
+ptu.controller("navigationController", function ($scope, $http, $rootScope) {
+	$rootScope.navArray = [];
+	$rootScope.$on('updateNav', function () {
+		console.dir($rootScope.navArray);
+		$scope.tabs = $rootScope.navArray;
+
+	});
+
 });

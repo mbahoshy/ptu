@@ -50,11 +50,15 @@
 	</div>
 </div>
 
-<div id='navigation'>
-	<span>Home</span>
-	<span ng-repeat='tab in tabs'>
-
-	</span>
+<div class='nav-wrapper'>
+	<div class='wrapper'>
+		<div ng-controller='navigationController' id='navigation'>
+			<span>Home</span>
+			<span ng-repeat='tab in tabs'>
+				{{tab.title}}
+			</span>
+		</div>
+	</div>
 </div>
 
 <div ng-view id='page'>
