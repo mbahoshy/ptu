@@ -1,3 +1,4 @@
+/* display-customer.less */
 .table-styling {
   border-collapse: collapse;
   width: 80%;
@@ -14,23 +15,19 @@
 .table-styling tr:hover {
   background-color: #ff0000;
 }
-.search-container {
-  float: left;
-  width: 100%;
-}
-.customer-listings {
+.pm-history-container {
   border-collapse: collapse;
   width: 80%;
   float: left;
   margin: 0 10%;
 }
-.customer-listings td,
-.customer-listings th {
+.pm-history-container td,
+.pm-history-container th {
   padding: 10px;
 }
-.customer-listings tr:nth-child(even) {
+.pm-history-container tr:nth-child(even) {
   background-color: #cccccc;
 }
-.customer-listings tr:hover {
+.pm-history-container tr:hover {
   background-color: #ff0000;
 }

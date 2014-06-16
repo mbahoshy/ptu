@@ -1,0 +1,35 @@
+<div>
+	<div class='customer-info-container'>
+		{{customer.nameFirst}}
+		{{customer.nameLast}}
+	</div>
+	<table class='pm-history-container'>
+		<tr>
+			<th>Equipment Type</th>
+			<th>Make</th>
+			<th>Model</th>
+			<th>Last Serviced</th>
+		<tr>
+		<tr ng-repeat='pm in customer.pm'>
+			<td>{{pm.type}}</td>
+			<td>{{pm.make}}</td>
+			<td>{{pm.model}}</td>
+			<td>{{pm.date}}</td>
+		</tr>
+	</table>
+	<div class='equipment-container'>
+		<div ng-repeat='equipment in customer.equipment' class='equipment'>
+			{{equipment.type}}
+			{{equipment.make}}
+			{{equipment.model}}
+			{{equipment.serial}}
+			<div class='equipment-history-button'>
+				View History
+			</div>
+			<div class='create-pm-button'>
+				Create PM
+			</div>
+		</div>
+	</div>
+	<h1>display customer</h1>
+</div>

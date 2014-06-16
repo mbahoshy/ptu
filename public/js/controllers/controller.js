@@ -1,6 +1,6 @@
 //controller.js
 
-ptu.controller("HomeController", function ($scope, $http) {
+ptu.controller("HomeController", function ($scope, $http, $location) {
 
 	$http.get('/customer').success(function(data, status) {
 		console.dir(data);
@@ -10,6 +10,8 @@ ptu.controller("HomeController", function ($scope, $http) {
 
 	$scope.customerClick = function (customer) {
 		console.dir(customer);
+		$location.url('/display-customer/' + customer._id);
+
 	}
 
 	$scope.instantSearch = function () {
@@ -47,4 +49,14 @@ ptu.controller("HomeController", function ($scope, $http) {
 	}
 
 	console.log('home page');
+});
+
+ptu.controller("displayCustomerController", function ($scope, $http, $routeParams) {
+
+	var id = $routeParams.id
+	console.log('display customer' + id);
+	$http.get('/customerid/' + id).success(function(data, status) {
+		console.dir(data);
+		$scope.customer = data;
+	});
 });

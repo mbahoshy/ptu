@@ -4,5 +4,9 @@ ptu.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 		templateUrl: '../views/home-view.html',
 		controller: 'HomeController'
 	});
+	$routeProvider.when('/display-customer/:id', {
+		templateUrl: '../views/display-customer-view.html',
+		controller: 'displayCustomerController'
+	});
 
 }]);

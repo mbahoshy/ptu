@@ -38,7 +38,8 @@ module.exports = function(grunt) {
 	      style: {
 	        files: {
 	          "public/css/index.css": "less/index.less",
-	          "public/css/main.css": "less/main.less"
+	          "public/css/main.css": "less/main.less",
+	          "public/css/display-customer.css": "less/display-customer.less"
 	        }
 	      }
 	    },
