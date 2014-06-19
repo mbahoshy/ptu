@@ -4,6 +4,7 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	$scope.data = {};
 	$http.get('/customer').success(function(data, status) {
 		$scope.data.customerList = data;
+		
 	});
 
 
@@ -91,11 +92,14 @@ ptu.controller("navigationController", function ($scope, $http, $rootScope, $loc
 
 
 	$scope.switchTab = function (tab) {
-		console.dir(tab);
-		$scope.$on('$routeChangeSuccess', function (evt, next, prev) {
-			next.scope.data = tab.data;
-		});
-		$location.url(tab.url);
+		if (tab === 0) {
+			$location.url('/');
+		} else {
+			$scope.$on('$routeChangeSuccess', function (evt, next, prev) {
+				next.scope.data = tab.data;
+			});
+			$location.url(tab.url);
+		}
 	}
 
 });
@@ -137,12 +141,16 @@ ptu.factory('navService', function($rootScope, $location) {
 				})();
 				console.dir(x);
 				if (x != true) {
-					console.dir(data);
-					that.navArray.push({
+					if (numTabs === 5) {
+						that.navArray.pop();
+					}
+
+					that.navArray.unshift({
 						url: url,
 						title: title,
 						data: data
 					});
+
 
 					$rootScope.$emit('updateNav');
 				}

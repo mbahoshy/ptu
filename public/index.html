@@ -53,7 +53,7 @@
 <div class='nav-wrapper'>
 	<div class='wrapper'>
 		<div ng-controller='navigationController' id='navigation'>
-			<span>Home</span>
+			<span ng-click='switchTab(0)'>Home</span>
 			<span ng-click='switchTab(tab)' ng-repeat='tab in tabs'>
 				{{tab.title}}
 			</span>
