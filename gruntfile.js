@@ -50,9 +50,7 @@ module.exports = function(grunt) {
 			    tasks: ['console'],
 			    options: {
 			      spawn: false,
-			      livereload: {
-				    // port: 3000,
-				  }
+			      livereload: true,
 			    }
 			},
 			css: {

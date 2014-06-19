@@ -55,7 +55,7 @@
 		<div ng-controller='navigationController' id='navigation'>
 			<span ng-click='switchTab(0)'>Home</span>
 			<span ng-click='switchTab(tab)' ng-repeat='tab in tabs'>
-				{{tab.title}}
+				{{tab.title}}<img ng-click='closeTab(tab)' src='/imgs/close.png'>
 			</span>
 		</div>
 	</div>

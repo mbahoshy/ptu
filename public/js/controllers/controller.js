@@ -4,7 +4,7 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	$scope.data = {};
 	$http.get('/customer').success(function(data, status) {
 		$scope.data.customerList = data;
-		
+
 	});
 
 
@@ -99,6 +99,17 @@ ptu.controller("navigationController", function ($scope, $http, $rootScope, $loc
 				next.scope.data = tab.data;
 			});
 			$location.url(tab.url);
+		}
+	}
+
+	$scope.closeTab = function (tab) {
+		var numTabs = navService.navArray.length;
+		for(var i = 0; i < numTabs; i ++) {
+			if(tab.url === navService.navArray[i].url) {
+				navService.navArray.splice(i,1);
+				$location.url('/');
+				break;
+			}
 		}
 	}
 

@@ -2,6 +2,23 @@
   float: left;
   width: 100%;
 }
+.search-container form {
+  width: 100%;
+}
+.search-container form input,
+.search-container form select {
+  padding: 5px 10px;
+  float: left;
+}
+.search-container input {
+  width: 60%;
+}
+.search-container input[type='submit'] {
+  width: 10%;
+}
+.search-container select {
+  width: 10%;
+}
 .customer-listings {
   border-collapse: collapse;
   width: 80%;
