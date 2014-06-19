@@ -1,7 +1,7 @@
 <div>
 	<div class='customer-info-container'>
-		{{customer.nameFirst}}
-		{{customer.nameLast}}
+		{{data.customer.nameFirst}}
+		{{data.customer.nameLast}}
 	</div>
 	<table class='pm-history-container'>
 		<tr>
@@ -10,7 +10,7 @@
 			<th>Model</th>
 			<th>Last Serviced</th>
 		<tr>
-		<tr ng-repeat='pm in customer.pm'>
+		<tr ng-repeat='pm in data.customer.pm'>
 			<td>{{pm.type}}</td>
 			<td>{{pm.make}}</td>
 			<td>{{pm.model}}</td>
@@ -18,7 +18,7 @@
 		</tr>
 	</table>
 	<div class='equipment-container'>
-		<div ng-repeat='equipment in customer.equipment' class='equipment'>
+		<div ng-repeat='equipment in data.customer.equipment' class='equipment'>
 			{{equipment.type}}
 			{{equipment.make}}
 			{{equipment.model}}

@@ -11,7 +11,8 @@ module.exports = function (app) {
 
 	});
 
-	app.post('/customer/:nameFirst/:nameLast/:email/:street/:city/:zip', mod.newCustomer);
+	app.post('/customer', mod.newCustomer);
+	// app.post('/customer/:nameFirst/:nameLast/:email/:street/:city/:zip', mod.newCustomer);
 	// app.post('/newcustomer', mod.newCustomer);
 
 	app.get('/customer', mod.returnCustomers);

@@ -1,15 +1,13 @@
 //controller.js
 
 ptu.controller("HomeController", function ($scope, $http, $location) {
-
+	$scope.data = {};
 	$http.get('/customer').success(function(data, status) {
-		console.dir(data);
-		$scope.customerList = data;
+		$scope.data.customerList = data;
 	});
 
 
 	$scope.customerClick = function (customer) {
-		console.dir(customer);
 		$location.url('/display-customer/' + customer._id);
 
 	}
@@ -26,14 +24,12 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	$scope.search = function () {
 
 
-	    var searchterms = $scope.search.terms.toUpperCase();
-	    var searchparameters = 'search.' + $scope.search.parameters;
-	    console.log(searchterms);
-	    console.log(searchparameters);
+	    var searchterms = $scope.data.search.terms.toUpperCase();
+	    var searchparameters = 'search.' + $scope.data.search.parameters;
 
 	    if (searchterms == '') {
 	        $.get('/customer', function(data) {
-	            $scope.customerList = data;
+	            $scope.data.customerList = data;
 
 	        });                
 	    } else {
@@ -42,8 +38,7 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	        y[searchparameters] = searchterms;
 
 	        $http.post('/customersearch', y).success(function(data, status) {
-	            $scope.customerList = data;
-	            console.dir(data);
+	            $scope.data.customerList = data;
 	        });
 	    }
 	}
@@ -51,27 +46,116 @@ ptu.controller("HomeController", function ($scope, $http, $location) {
 	console.log('home page');
 });
 
-ptu.controller("displayCustomerController", function ($scope, $http, $routeParams, $rootScope) {
+ptu.controller("displayCustomerController", function ($scope, $http, $routeParams, $location, $rootScope, navService) {
+	$scope.data = {};
+
 	var id = $routeParams.id;
 
 	console.log('display customer' + id);
+
 	$http.get('/customerid/' + id).success(function(data, status) {
-		console.dir(data);
-		$scope.customer = data;
-		$rootScope.navArray.push({
-			title: data.nameLast + ', ' + data.nameFirst,
-			data: data
-		});
-		$rootScope.$emit('updateNav');
+		$scope.data.customer = data;
+		var title = data.nameLast + ', ' + data.nameFirst;
+		navService.registerTab($scope.data, title, $location.url());
 	});
+
+	
+
 });
 
-ptu.controller("navigationController", function ($scope, $http, $rootScope) {
-	$rootScope.navArray = [];
+ptu.controller("addCustomerController", function ($scope, $http, $routeParams, $rootScope, $location, navService) {
+	$scope.data = {};
+
+
+	$scope.addCustomer = function () {
+		$http.post('/customer', $scope.customer);
+	}
+
+	var title = "Add Customer";
+
+	$scope.$watch('data', function () {
+		navService.registerTab($scope.data, title, $location.url());
+	});
+	
+
+});
+
+ptu.controller("navigationController", function ($scope, $http, $rootScope, $location, navService) {
+	// $rootScope.navArray = [];
 	$rootScope.$on('updateNav', function () {
-		console.dir($rootScope.navArray);
-		$scope.tabs = $rootScope.navArray;
+		console.dir(navService.navArray);
+		$scope.tabs = navService.navArray;
 
 	});
 
+
+
+	$scope.switchTab = function (tab) {
+		console.dir(tab);
+		$scope.$on('$routeChangeSuccess', function (evt, next, prev) {
+			next.scope.data = tab.data;
+		});
+		$location.url(tab.url);
+	}
+
 });
+
+ptu.factory('navService', function($rootScope, $location) {
+	return {
+		navArray: [],
+
+		pushNav: function (data) {
+
+		
+		},
+
+		registerTab: function (data, title, url) {
+			var that = this;
+			// var location = $location;
+			// pushNav(scope);
+
+
+			// scope.$on('$routeChangeStart', function(evt, next, current) {
+			// 	pushNav(scope);
+			// 	// console.dir($scope);
+
+
+			// });
+
+
+			function pushNav (data) {
+				// console.dir(location);
+				var numTabs = that.navArray.length;
+				var x = (function () {
+					for(var i = 0; i < numTabs; i ++) {
+						if (that.navArray[i].url == url) {
+							that.navArray[i].data = data;
+							$rootScope.$emit('updateNav');
+							return true;
+						}
+					}
+				})();
+				console.dir(x);
+				if (x != true) {
+					console.dir(data);
+					that.navArray.push({
+						url: url,
+						title: title,
+						data: data
+					});
+
+					$rootScope.$emit('updateNav');
+				}
+
+			}
+			pushNav(data);
+
+		}
+	}
+
+
+});
+
+// ptu.run(['$rootScope', '$location', function($rootScope, $location, navService){
+
+// }]);

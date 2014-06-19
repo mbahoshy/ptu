@@ -8,5 +8,9 @@ ptu.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 		templateUrl: '../views/display-customer-view.html',
 		controller: 'displayCustomerController'
 	});
+	$routeProvider.when('/addCustomer', {
+		templateUrl: '../views/add-customer-view.html',
+		controller: 'addCustomerController'
+	});
 
 }]);

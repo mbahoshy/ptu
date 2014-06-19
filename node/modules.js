@@ -1,17 +1,18 @@
 var customer = require('../node/models/customer');
 
 function newCustomer (req, res) {
-	var nameFirst = req.param("nameFirst"),
-		nameLast = req.param("nameLast"),
-		email = req.param("email"),
-		street = req.param("street"),
-		city = req.param("city"),
-		zip = req.param("zip");
+	// var nameFirst = req.param("nameFirst"),
+	// 	nameLast = req.param("nameLast"),
+	// 	email = req.param("email"),
+	// 	street = req.param("street"),
+	// 	city = req.param("city"),
+	// 	zip = req.param("zip");
 		
+	var newCustomer = req.body;
+	console.log(newCustomer);
+	customer.add(newCustomer.nameLast, newCustomer.nameFirst, newCustomer.email, newCustomer.address.street, newCustomer.address.city, newCustomer.address.zip, res);
 
-	customer.add(nameLast, nameFirst, email, street, city, zip, res);
-
-	console.log(nameFirst);
+	// console.log(nameFirst);
 	// res.json({'success':true});
 
 }
