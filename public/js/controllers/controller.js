@@ -198,23 +198,23 @@ ptu.controller("pmController", function ($scope, $http, $routeParams, $location,
 		navService.registerTab($scope.data, title, $location.url());
 	});
 
-	var customerid = $routeParams.customerid,
-		pmid = $routeParams.pmid;
+	// var customerid = $routeParams.customerid,
+	// 	pmid = $routeParams.pmid;
 
 
-	$http.get('/customerid/' + customerid).success(function(data, status){
-		console.dir(data);
-		var pm;
-		for(var i=0; i < data.pm.length; i++) {
-			if(data.pm[i].pmid == pmid) {
-				pm = data.pm[i];
-				break;
-			}
-		}
-		title = data.nameLast;
-		$scope.data = pm;
+	// $http.get('/customerid/' + customerid).success(function(data, status){
+	// 	console.dir(data);
+	// 	var pm;
+	// 	for(var i=0; i < data.pm.length; i++) {
+	// 		if(data.pm[i].pmid == pmid) {
+	// 			pm = data.pm[i];
+	// 			break;
+	// 		}
+	// 	}
+	// 	title = data.nameLast;
+	// 	$scope.data = pm;
 
-		console.dir(pm);
-	});
+	// 	console.dir(pm);
+	// });
 
 });

@@ -12,7 +12,7 @@
 //     }
 // });
 
-ptu.directive('pmrender', ['$compile', '$http', '$templateCache', function($compile, $http, $templateCache) {
+ptu.directive('pmrender', ['$compile', '$http', '$templateCache', '$routeParams', function($compile, $http, $templateCache, $routeParams) {
 
         var getTemplate = function(contentType) {
             var templateLoader,
@@ -30,25 +30,48 @@ ptu.directive('pmrender', ['$compile', '$http', '$templateCache', function($comp
         }
 
         var linker = function(scope, element, attrs) {
-            console.dir(typeof(scope.$pmtype));
-            // console.dir(scope.pmtype.val());
-            console.dir(scope.$pmtype);
-            console.dir(scope['pmtype']);
-            // console.log(attrs.pmtype);
-            var loader = getTemplate(scope.pmtype);
+                scope.data = {};
+                var customerid = $routeParams.customerid,
+                    pmid = $routeParams.pmid;
 
-            var promise = loader.success(function(html) {
-                element.html(html);
-            }).then(function (response) {
-                element.replaceWith($compile(element.html())(scope));
-            });
+
+                $http.get('/customerid/' + customerid).success(function(data, status){
+                    console.dir(data);
+                    var pm;
+                    for(var i=0; i < data.pm.length; i++) {
+                        if(data.pm[i].pmid == pmid) {
+                            pm = data.pm[i];
+                            break;
+                        }
+                    }
+                    // title = data.nameLast;
+                    // $scope.data = pm;
+
+                    scope.data = pm;
+
+                    console.dir(pm);
+              
+                    var loader = getTemplate(pm.type);
+
+                    var promise = loader.success(function(html) {
+                        element.html(html);
+                    }).then(function (response) {
+                        element.replaceWith($compile(element.html())(scope));
+                    });
+
+              });
         }
+
+        // var Controller = function (scope, element, attrs) {
+        //     // console.dir(scope);
+        // }
 
         return {
             restrict: 'E',
-            scope: {
-                $pmtype:'@pmtype'
-            },
-            link: linker
+            // scope: {
+            //     $pmtype:'@pmtype'
+            // },
+            link: linker,
+            // controller: Controller
         };
     }]);
