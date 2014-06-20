@@ -35,7 +35,7 @@ body {
 	margin:0 5%;
 	float: left;
 	span {
-		width:100px;
+		min-width:100px;
 		float: left;
 		padding:10px 10px;
 		background-color: @navTabs;
@@ -44,11 +44,18 @@ body {
 		img {
 			width:20px;
 			float:right;
-			padding-left: 15px;
+			margin-left: 15px;
 			opacity: .9;
+			border-radius: 10px;
+		}
+		img:hover {
+			background-color: @hover;
 		}
 	}
 	span:hover {
 		cursor: pointer;
+	}
+	.active-nav {
+		background-color: #FFFFFF;
 	}
 }

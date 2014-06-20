@@ -60,6 +60,9 @@ ptu.controller("displayCustomerController", function ($scope, $http, $routeParam
 		navService.registerTab($scope.data, title, $location.url());
 	});
 
+	$scope.pmClick = function (pm) {
+		$location.url('/pm/' + id + '/' + pm.pmid);
+	}
 	
 
 });
@@ -84,14 +87,22 @@ ptu.controller("addCustomerController", function ($scope, $http, $routeParams, $
 ptu.controller("navigationController", function ($scope, $http, $rootScope, $location, navService) {
 	// $rootScope.navArray = [];
 	$rootScope.$on('updateNav', function () {
-		console.dir(navService.navArray);
+		$('.active-nav').removeClass('active-nav');
+		for (var i = 0; i < navService.navArray.length; i++) {
+			if(navService.navArray[i].url == $location.url()) {
+				navService.navArray[i].class = 'active-nav';
+				break;
+			}
+		}
 		$scope.tabs = navService.navArray;
 
 	});
 
 
 
-	$scope.switchTab = function (tab) {
+	$scope.switchTab = function (tab, $event) {
+		$('.active-nav').removeClass('active-nav');
+		$(event.target).addClass('active-nav');
 		if (tab === 0) {
 			$location.url('/');
 		} else {
@@ -178,3 +189,32 @@ ptu.factory('navService', function($rootScope, $location) {
 // ptu.run(['$rootScope', '$location', function($rootScope, $location, navService){
 
 // }]);
+
+
+ptu.controller("pmController", function ($scope, $http, $routeParams, $location, navService) {
+	$scope.data = {};
+	var title = '';
+	$scope.$watch('data', function () {
+		navService.registerTab($scope.data, title, $location.url());
+	});
+
+	var customerid = $routeParams.customerid,
+		pmid = $routeParams.pmid;
+
+
+	$http.get('/customerid/' + customerid).success(function(data, status){
+		console.dir(data);
+		var pm;
+		for(var i=0; i < data.pm.length; i++) {
+			if(data.pm[i].pmid == pmid) {
+				pm = data.pm[i];
+				break;
+			}
+		}
+		title = data.nameLast;
+		$scope.data = pm;
+
+		console.dir(pm);
+	});
+
+});

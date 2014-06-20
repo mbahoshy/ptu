@@ -12,5 +12,9 @@ ptu.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 		templateUrl: '../views/add-customer-view.html',
 		controller: 'addCustomerController'
 	});
+	$routeProvider.when('/pm/:customerid/:pmid', {
+		templateUrl: '../views/pm-view.html',
+		controller: 'pmController'
+	});
 
 }]);

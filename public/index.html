@@ -15,6 +15,7 @@
 	<script type="text/javascript" src='js/main.js'></script>
 	<script type="text/javascript" src='js/routes-ng.js'></script>
 	<script type="text/javascript" src='js/controllers/controller.js'></script>
+	<script type="text/javascript" src='js/directives/directives.js'></script>
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -54,7 +55,7 @@
 	<div class='wrapper'>
 		<div ng-controller='navigationController' id='navigation'>
 			<span ng-click='switchTab(0)'>Home</span>
-			<span ng-click='switchTab(tab)' ng-repeat='tab in tabs'>
+			<span class='{{tab.class}}' ng-click='switchTab(tab, $event)' ng-repeat='tab in tabs'>
 				{{tab.title}}<img ng-click='closeTab(tab)' src='/imgs/close.png'>
 			</span>
 		</div>
