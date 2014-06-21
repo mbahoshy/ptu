@@ -57,7 +57,7 @@ ptu.controller("displayCustomerController", function ($scope, $http, $routeParam
 	$http.get('/customerid/' + id).success(function(data, status) {
 		$scope.data.customer = data;
 		var title = data.nameLast + ', ' + data.nameFirst;
-		navService.registerTab($scope.data, title, $location.url());
+		navService.registerTab($scope, title, $location.url());
 	});
 
 	$scope.pmClick = function (pm) {
@@ -77,9 +77,7 @@ ptu.controller("addCustomerController", function ($scope, $http, $routeParams, $
 
 	var title = "Add Customer";
 
-	$scope.$watch('data', function () {
-		navService.registerTab($scope.data, title, $location.url());
-	});
+	navService.registerTab($scope, title, $location.url());
 	
 
 });
@@ -130,12 +128,10 @@ ptu.factory('navService', function($rootScope, $location) {
 	return {
 		navArray: [],
 
-		pushNav: function (data) {
+		registerTab: function (sc, title, url) {
+	
 
-		
-		},
 
-		registerTab: function (data, title, url) {
 			var that = this;
 			// var location = $location;
 			// pushNav(scope);
@@ -178,7 +174,11 @@ ptu.factory('navService', function($rootScope, $location) {
 				}
 
 			}
-			pushNav(data);
+
+			sc.$watch('data', function () {
+				var data = sc.data;
+				pushNav(data);
+			});
 
 		}
 	}
@@ -192,11 +192,7 @@ ptu.factory('navService', function($rootScope, $location) {
 
 
 ptu.controller("pmController", function ($scope, $http, $routeParams, $location, navService) {
-	$scope.data = {};
-	var title = '';
-	$scope.$watch('data', function () {
-		navService.registerTab($scope.data, title, $location.url());
-	});
+
 
 	// var customerid = $routeParams.customerid,
 	// 	pmid = $routeParams.pmid;

@@ -12,7 +12,7 @@
 //     }
 // });
 
-ptu.directive('pmrender', ['$compile', '$http', '$templateCache', '$routeParams', function($compile, $http, $templateCache, $routeParams) {
+ptu.directive('pmrender', ['$compile', '$http', '$templateCache', '$routeParams', '$location', 'navService', function($compile, $http, $templateCache, $routeParams, $location, navService) {
 
         var getTemplate = function(contentType) {
             var templateLoader,
@@ -36,18 +36,24 @@ ptu.directive('pmrender', ['$compile', '$http', '$templateCache', '$routeParams'
 
 
                 $http.get('/customerid/' + customerid).success(function(data, status){
-                    console.dir(data);
-                    var pm;
+
+                    var pm,
+                        title;
+
+                    title = 'PM ' + data.nameLast;
+                    
+
                     for(var i=0; i < data.pm.length; i++) {
                         if(data.pm[i].pmid == pmid) {
                             pm = data.pm[i];
                             break;
                         }
                     }
-                    // title = data.nameLast;
-                    // $scope.data = pm;
+
 
                     scope.data = pm;
+
+                    navService.registerTab(scope, title, $location.url());
 
                     console.dir(pm);
               
